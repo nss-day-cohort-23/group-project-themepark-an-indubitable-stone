@@ -18,6 +18,14 @@ function getAttractionsHappeningNow(data, hour) {
       happeningNow.push(attraction);
     } else if (attraction.times) {
       let attractionArr = attraction.times.filter(time => {
+        let amOrPm = time.match(/\w\w$/)[0];
+        let timeToCheck = +time.match(/\d+(?=:)/);
+
+        timeToCheck = amOrPm === "PM" ?
+        (timeToCheck === 12 ? timeToCheck : timeToCheck + 12) :
+        (timeToCheck === 12 ? timeToCheck = 0 : timeToCheck);
+
+        return regexHour.test(timeToCheck);
       });
       if (attractionArr.length > 0) happeningNow.unshift(attraction);
     }
