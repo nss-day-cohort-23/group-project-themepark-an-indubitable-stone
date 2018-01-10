@@ -1,18 +1,5 @@
-"use strict";
-const $ = require("jquery");
+'use strict';
+const $ = require('jquery');
+const controller = require("./controller");
 
-
-const setFooterDate = () => {
-    let todaysDate = new Date(Date.now()),
-    day = todaysDate.getDay(),
-    month = todaysDate.getMonth(),
-    year = todaysDate.getFullYear();
-
-    let monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"];
-
-    $("#footer-date").text(`${monthNames[month+1]} ${day} ${year} `);
-};
-
-
-setFooterDate();
+controller.loadPage();
