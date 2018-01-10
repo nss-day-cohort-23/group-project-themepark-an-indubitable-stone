@@ -9,6 +9,22 @@ function getTime() {
   return time;
 }
 
+function getAttractionsHappeningNow(data, hour) {
+  const regexHour = new RegExp(`${hour}`);
+  let happeningNow = [];
+
+  data.forEach(attraction => {
+    if (!attraction.times) {
+      happeningNow.push(attraction);
+    } else if (attraction.times) {
+      let attractionArr = attraction.times.filter(time => {
+      });
+      if (attractionArr.length > 0) happeningNow.unshift(attraction);
+    }
+  });
+
+  return happeningNow;
+}
 
 module.exports.getParkInfo = function() {
   return new Promise(function(resolve, reject) {
