@@ -38,3 +38,7 @@ module.exports.printFooterDate = () => {
 
     $("#footer-date").text(`${monthNames[month+1]} ${day} ${year} `);
 };
+
+module.exports.showDateTimeSelector = () => {
+    $('#time-selector').bootstrapMaterialDatePicker({ date: false });
+};
