@@ -1,0 +1,33 @@
+{
+  "name": "group-project-themepark-an-indubitable-stone",
+  "version": "1.0.0",
+  "description": "As a team you will create a interactive map of a theme park. The park will include 8 areas with different attractions and events.",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nss-day-cohort-23/group-project-themepark-an-indubitable-stone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nss-day-cohort-23/group-project-themepark-an-indubitable-stone/issues"
+  },
+  "homepage": "https://github.com/nss-day-cohort-23/group-project-themepark-an-indubitable-stone#readme",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-handlebars": "^1.0.0",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-sass": "^0.9.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "handlebars": "^4.0.5",
+    "hbsfy": "^2.7.0",
+    "jquery": "^3.1.0",
+    "jshint": "^2.9.1",
+    "matchdep": "^0.3.0"
+  }
+}
