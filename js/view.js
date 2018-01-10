@@ -14,8 +14,16 @@ module.exports.printAttractions = function(data) {
     });
 };
 
-module.exports.highlightArea = function() {
+module.exports.highlightArea = function(ids) {
+    let $areas = $(".parkArea");
 
+    $areas.removeClass("highlighted");
+
+    $areas.each(function() {
+        if(ids.includes(+$(this).attr("area_id"))){
+            $(this).addClass("highlighted");
+        }
+    });
 };
 
 module.exports.printAttractionDetails = function() {
