@@ -28,14 +28,14 @@ module.exports.getAttractions = function(obj) {
 
   let url = `${fbURL}/attractions.json`;
 
-  url = obj.area_id ? `${url}?indexOn=${obj.area_id}` : url;
-
+  url = options.area_id ? `${url}?indexOn=${options.area_id}` : url;
   return new Promise(function(resolve, reject) {
     $.ajax({
       url: `${url}`
     })
+    .done(data => {
+      resolve(data);
     })
-    .done(data => resolve(data))
     .fail(err => reject(err));
   });
 };
