@@ -3,8 +3,16 @@ const $ = require('jquery');
 const detail = require("../templates/detail.hbs");
 const sidebar = require("../templates/sidebar.hbs");
 
-module.exports.printAttractions = function() {
-
+module.exports.printAttractions = function(data) {
+    let attractionsArray = [];
+    let keys = Object.keys(data);
+    keys.forEach( (key) => {
+        data[key].id = key;
+        attractionsArray.push(data[key]);
+    });
+    attractionsArray.forEach( attraction => {
+        $("#sidebar").append(`<p><a href="">${attraction.name}</a></p>`);
+    });
 };
 
 module.exports.highlightArea = function() {
