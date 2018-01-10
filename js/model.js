@@ -23,8 +23,16 @@ module.exports.getAreas = function() {
   });
 };
 
-module.exports.getAttractions = function() {
+module.exports.getAttractions = function(obj) {
+  let options = obj || {};
 
+  return new Promise(function(resolve, reject) {
+    $.ajax({
+      url: `${fbURL}/attractions/${options}.json`
+    })
+    .done(data => resolve(data))
+    .fail(err => reject(err));
+  });
 };
 
 module.exports.getAttaction = function() {
