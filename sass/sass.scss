@@ -17,12 +17,20 @@ aside {
     float: left;
     width: 30%;
     border-right: 1px solid black;
+    height: 500px;
+    overflow: scroll;
 }
 
 main {
     width: 65%;
     float: right;
     border-left: 1px solid black;
+}
+
+
+footer {
+    clear: both;
+    text-align: right;
 }
 
 .highlighted {
