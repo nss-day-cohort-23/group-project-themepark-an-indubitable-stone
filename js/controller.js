@@ -5,7 +5,12 @@ const view = require("./view");
 
 module.exports.loadPage = function()  {
     view.printFooterDate();
+    model.getAttractions()
+    .then((data) => {
+        view.printAttractions(data);
+    });
     module.exports.activateListeners();
+    
 };
 
 module.exports.activateListeners = function() {
