@@ -1,11 +1,12 @@
 'use strict';
 const $ = require('jquery');
 
-const fbURL = "https://an-indubitable-stone.firebaseio.com/"
+const fbURL = "https://an-indubitable-stone.firebaseio.com/";
+
 module.exports.getParkInfo = function() {
   return new Promise(function(resolve, reject) {
     $.ajax({
-      url: `${fbURL}/park-info`
+      url: `${fbURL}/park-info.json`
     })
     .done(data => resolve(data))
     .fail(err => reject(err));
@@ -15,7 +16,7 @@ module.exports.getParkInfo = function() {
 module.exports.getAreas = function() {
   return new Promise(function(resolve, reject) {
     $.ajax({
-      url: `${fbURL}/areas`
+      url: `${fbURL}/areas.json`
     })
     .done(data => resolve(data))
     .fail(err => reject(err));
