@@ -1,7 +1,8 @@
 'use strict';
 const $ = require('jquery');
 
-const fbURL = "https://an-indubitable-stone.firebaseio.com/";
+const fbURL = "https://an-indubitable-stone.firebaseio.com";
+
 
 module.exports.getParkInfo = function() {
   return new Promise(function(resolve, reject) {
@@ -23,15 +24,10 @@ module.exports.getAreas = function() {
   });
 };
 
-module.exports.getAttractions = function(obj) {
-  let options = obj || {area_id: null};
-
-  let url = `${fbURL}/attractions.json`;
-
-  url = options.area_id ? `${url}?indexOn=${options.area_id}` : url;
+module.exports.getAttractions = function(id) {
   return new Promise(function(resolve, reject) {
     $.ajax({
-      url: `${url}`
+      url: `${fbURL}/attractions.json`
     })
     .done(data => {
       resolve(data);
