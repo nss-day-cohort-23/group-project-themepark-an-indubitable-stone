@@ -11,7 +11,7 @@ const setFooterDate = () => {
     let monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
 
-    $("#footer-date").text(`${day} ${monthNames[month+1]} ${year}`);
+    $("#footer-date").text(`${day} ${monthNames[month+1]} ${year} `);
 };
 
 
