@@ -3,6 +3,12 @@ const $ = require('jquery');
 
 const fbURL = "https://an-indubitable-stone.firebaseio.com";
 
+function getTime() {
+  let time = new Date(Date.now());
+  time = time.getHours();
+  return time;
+}
+
 
 module.exports.getParkInfo = function() {
   return new Promise(function(resolve, reject) {
