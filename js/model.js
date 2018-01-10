@@ -40,10 +40,10 @@ module.exports.getAttractions = function(obj) {
   });
 };
 
-module.exports.getAttaction = function(attraction) {
+module.exports.getAttraction = function(attraction) {
   return new Promise(function(resolve, reject) {
     $.ajax({
-      url: `${fbURL}/attractions/${attraction}.json`
+      url: `${fbURL}/attractions/${attraction.id}.json`
     })
     .done(data => resolve(data))
     .fail(err => reject(err));
