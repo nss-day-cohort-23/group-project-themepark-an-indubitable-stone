@@ -34,7 +34,6 @@ module.exports.getAttractions = function(obj) {
     $.ajax({
       url: `${url}`
     })
-    })
     .done(data => resolve(data))
     .fail(err => reject(err));
   });
