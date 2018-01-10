@@ -1,9 +1,26 @@
 #gridWrap {
     display: grid;
-    grid-template-columns: repeat(3, 4em);
-    grid-template-rows: repeat(3, 5em);
+    grid-template-columns: repeat(3, 12em);
+    grid-template-rows: repeat(3, 7em);
+    grid-gap: 1em;
+    justify-content: center;
+    margin: 2em auto;
+    border: 2px solid black;
 }
 
 #gripWrap div {
     display: grid;
+    border: 2px solid black;
+}
+
+aside {
+    float: left;
+    width: 30%;
+    border-right: 1px solid black;
+}
+
+main {
+    width: 65%;
+    float: right;
+    border-left: 1px solid black;
 }
