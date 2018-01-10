@@ -1,0 +1,9 @@
+#gridWrap {
+    display: grid;
+    grid-template-columns: repeat(3, 4em);
+    grid-template-rows: repeat(3, 5em);
+}
+
+#gripWrap div {
+    display: grid;
+}
