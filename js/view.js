@@ -13,7 +13,7 @@ module.exports.highlightArea = function(ids) {
     $areas.removeClass("highlighted");
 
     $areas.each(function() {
-        if(ids.contains(+$(this).attr("area_id"))){
+        if(ids.includes(+$(this).attr("area_id"))){
             $(this).addClass("highlighted");
         }
     });
