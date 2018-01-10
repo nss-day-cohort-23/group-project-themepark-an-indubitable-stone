@@ -40,5 +40,11 @@ module.exports.getAttaction = function() {
 };
 
 function getAttractionTypes() {
-
+  return new Promise(function(resolve, reject) {
+    $.ajax({
+      url: `${fbURL}/attraction_types.json`
+    })
+    .done(data => resolve(data))
+    .fail(err => reject(err));
+  });
 }
