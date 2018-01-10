@@ -24,21 +24,26 @@ module.exports.getAreas = function() {
 };
 
 module.exports.getAttractions = function(obj) {
-  let options = obj || {};
+  let options = obj || {area_id: null};
+
+  let url = `${fbURL}/attractions.json`;
+
+  url = obj.area_id ? `${url}?indexOn=${obj.area_id}` : url;
 
   return new Promise(function(resolve, reject) {
     $.ajax({
-      url: `${fbURL}/attractions/${options}.json`
+      url: `${url}`
+    })
     })
     .done(data => resolve(data))
     .fail(err => reject(err));
   });
 };
 
-module.exports.getAttaction = function(attraction) {
+module.exports.getAttraction = function(attraction) {
   return new Promise(function(resolve, reject) {
     $.ajax({
-      url: `${fbURL}/attractions/${attraction}.json`
+      url: `${fbURL}/attractions/${attraction.id}.json`
     })
     .done(data => resolve(data))
     .fail(err => reject(err));
