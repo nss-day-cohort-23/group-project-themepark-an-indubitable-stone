@@ -8,11 +8,9 @@ module.exports.loadPage = function()  {
 };
 
 module.exports.activateListeners = function() {
-
+    $("#search-field").keypress(function (e) {
+        if (e.which == 13) {
+          // execute function on enter press
+        }
+    });
 };
-
-$("#search-field").keypress(function (e) {
-    if (e.which == 13) {
-      // execute function on enter press
-    }
-});
