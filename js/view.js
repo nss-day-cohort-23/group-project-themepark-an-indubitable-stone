@@ -1,19 +1,19 @@
 'use strict';
 const $ = require('jquery');
 
-module.exportsprintAttractions = function() {
+module.exports.printAttractions = function() {
 
 };
 
-module.exportshighlightArea = function() {
+module.exports.highlightArea = function() {
 
 };
 
-module.exportsprintAttractionDetails = function() {
+module.exports.printAttractionDetails = function() {
 
 };
 
-module.exportsremoveAttractionDetails = function() {
+module.exports.removeAttractionDetails = function() {
 
 };
 
