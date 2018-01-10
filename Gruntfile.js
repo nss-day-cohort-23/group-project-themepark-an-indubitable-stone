@@ -19,6 +19,13 @@ module.exports = function (grunt) {
         },
         files: ["javascripts/**/*.js"]
       },
+      sass: {
+        dist: {
+            files: {
+                'css/main.css': 'sass/sass.scss'
+            }
+        }
+        }, 
       watch: {
         options: {
           reload: true
@@ -26,6 +33,10 @@ module.exports = function (grunt) {
         javascripts: {
           files: ["javascripts/**/*.js"],
           tasks: ["jshint", "browserify"]
+        },
+        sass: {
+            files: ['sass/**/*.scss'],
+            tasks: ['sass']
         },
         hbs: {
           files: ["templates/**/*.hbs"],
@@ -38,5 +49,5 @@ module.exports = function (grunt) {
       .filter("grunt-*")
       .forEach(grunt.loadNpmTasks);
   
-    grunt.registerTask("default", ["jshint", "browserify", "watch"]);
+    grunt.registerTask("default", ["jshint", "sass", "browserify", "watch"]);
   };
