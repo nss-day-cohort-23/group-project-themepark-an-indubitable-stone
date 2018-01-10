@@ -14,7 +14,11 @@ module.exports.getParkInfo = function() {
 
 module.exports.getAreas = function() {
   return new Promise(function(resolve, reject) {
-
+    $.ajax({
+      url: `${fbURL}/areas`
+    })
+    .done(data => resolve(data))
+    .fail(err => reject(err));
   });
 };
 
