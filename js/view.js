@@ -7,7 +7,6 @@ module.exports.printAttractions = function(data) {
     let attractionsArray = [];
     let keys = Object.keys(data);
     keys.forEach( (key) => {
-        data[key].id = key;
         attractionsArray.push(data[key]);
     });
     attractionsArray.forEach( attraction => {
