@@ -26,8 +26,10 @@ module.exports.highlightArea = function(ids) {
     });
 };
 
-module.exports.printAttractionDetails = function() {
-
+module.exports.printAttractionDetails = function(attraction) {
+    $("#sidebar").on("click", ".attractionData", function(){
+        $(this).append(detail(attraction));
+    });
 };
 
 module.exports.removeAttractionDetails = function() {
