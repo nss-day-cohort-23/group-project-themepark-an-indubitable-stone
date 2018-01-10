@@ -5,6 +5,7 @@ const view = require("./view");
 
 module.exports.loadPage = function()  {
     view.printFooterDate();
+    module.exports.activateListeners();
 };
 
 module.exports.activateListeners = function() {
@@ -13,4 +14,8 @@ module.exports.activateListeners = function() {
           // execute function on enter press
         }
     });
+    $("#time-selector").on("change", function(){
+        console.log($(this).val());
+    });
 };
+
