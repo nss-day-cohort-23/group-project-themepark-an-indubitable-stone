@@ -35,8 +35,14 @@ module.exports.getAttractions = function(obj) {
   });
 };
 
-module.exports.getAttaction = function() {
-
+module.exports.getAttaction = function(attraction) {
+  return new Promise(function(resolve, reject) {
+    $.ajax({
+      url: `${fbURL}/attractions/${attraction}.json`
+    })
+    .done(data => resolve(data))
+    .fail(err => reject(err));
+  });
 };
 
 function getAttractionTypes() {
