@@ -81,8 +81,7 @@ module.exports.loadPage = function()  {
 
       let currentHour = getHours();
 
-
-      if(currentHour > 9 || currentHour < 22) {
+      if(currentHour >= 9 && currentHour < 22) {
           let attractions = model.filterForHappeningNow(data, currentHour);
           model.getAttractionTypes()
           .then(types => {
