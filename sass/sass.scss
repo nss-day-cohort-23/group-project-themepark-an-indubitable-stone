@@ -1,26 +1,32 @@
 $candyCane: rgba(145, 22, 22, 0.801);
 
 nav {
-    margin-bottom: 2vw;
+    margin-bottom: 1vw;
+}
+
+h2 {
+    display: inline;
+    margin-right: 6vw;
 }
 
 #gridWrap {
     display: grid;
-    grid-template-columns: repeat(3, 18vw);
-    grid-template-rows: repeat(3, 14vw);
-    grid-gap: .8vw;
+    grid-template-columns: repeat(3, 15vw);
+    grid-template-rows: repeat(3, 10vw);
+    grid-row-gap: 1.7vw;
+    grid-column-gap: 2.7vw;
     justify-content: center;
-    margin: 2em auto;
-    padding: 2em;
+    margin: 1em auto;
+    padding: 1.3vw;
     border: 2px solid black;
 }
 
 .parkArea {
-    padding-top: 5.4vw;
+    padding-top: 3.9vw;
     border: 2px solid black;
     border-radius: 1em;
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 2.1vw;
+    font-size: 1.8vw;
     color: rgb(255, 234, 234);
     text-shadow: 
         .2vw 0 rgb(22, 21, 11),
