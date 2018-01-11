@@ -16,7 +16,7 @@ const getTime = () => {
   let time = new Date(Date.now());
   time = time.getHours();
   return time;
-}
+};
 
 module.exports.loadPage = function()  {
     view.printFooterDate();
