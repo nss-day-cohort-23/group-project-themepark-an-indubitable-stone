@@ -37,9 +37,14 @@ const activateListeners = function() {
 
         model.getAttractions()
         .then(data => {
-            console.log(data);
             data = model.filterForHappeningNow(data, hour);
-            view.printAttractions(data);
+            model.getAreas()
+            .then(areas => {
+                data = model.includeAreas(data, areas);
+                console.log(data);
+                view.printAttractions(data);
+            })
+            .catch(err => console.log(err));
         })
         .catch(err => console.log(err));
     });
