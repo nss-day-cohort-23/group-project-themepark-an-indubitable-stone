@@ -102,16 +102,6 @@ module.exports.getAttraction = function(attraction) {
   });
 };
 
-function getAttractionTypes() {
-  return new Promise(function(resolve, reject) {
-    $.ajax({
-      url: `${fbURL}/attraction_types.json`
-    })
-    .done(data => resolve(data))
-    .fail(err => reject(err));
-  });
-}
-
 function findAttractions(attractions, search) {
   let selectAtrractions = [];
   let regexSearch = new RegExp(`${search}`, 'gi');
