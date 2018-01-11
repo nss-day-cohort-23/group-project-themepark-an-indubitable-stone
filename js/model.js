@@ -60,6 +60,12 @@ module.exports.getAttractions = function(id) {
       url: `${fbURL}/attractions.json`
     })
     .done(data => {
+      let hour = 15 || getTime();
+      if (hour < 9 || hour > 22) {
+        data = null;
+      } else {
+        data = getAttractionsHappeningNow(data, hour);
+      }
       resolve(data);
     })
     .fail(err => reject(err));
