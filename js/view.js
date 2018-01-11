@@ -28,14 +28,14 @@ module.exports.highlightArea = function(ids) {
 
 module.exports.printAttractionDetails = function(attraction) {
     removeAttractionDetails();
-    
+
     $("#sidebar").on("click", ".attractionData", function(){
         $(this).append(detail(attraction));
     });
 };
 
 const removeAttractionDetails = function() {
-    $(".attractionDetails").remove();
+    $(".attractionData").remove();
 };
 
 module.exports.printFooterDate = () => {
