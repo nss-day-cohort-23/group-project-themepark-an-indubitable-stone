@@ -35,15 +35,21 @@ module.exports.printAttractionDetails = function(attraction) {
     });
 };
 
-
 module.exports.printFooterDate = () => {
     let todaysDate = new Date(Date.now()),
     day = todaysDate.getDay(),
     month = todaysDate.getMonth(),
     year = todaysDate.getFullYear();
-
+    
     let monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
-
+    
     $("#footer-date").text(`${monthNames[month+1]} ${day} ${year} `);
+};
+
+
+module.exports.colorGrid = function(areas) {
+    areas.forEach( i => {
+        $(`div#park${i.id}`).css("background-color", `#${i.colorTheme}`);
+    });
 };
