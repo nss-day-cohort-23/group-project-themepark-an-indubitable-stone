@@ -1,5 +1,9 @@
 $candyCane: rgba(145, 22, 22, 0.801);
 
+body {
+    font-family: 'Heebo', Helvetica, sans-serif;
+}
+
 nav {
     margin-bottom: 1vw;
 }
@@ -7,6 +11,21 @@ nav {
 h2 {
     display: inline;
     margin-right: 6vw;
+    font-family: 'Shrikhand', Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(236, 236, 236);
+    text-shadow: 0 0 .02vw black, 0 0 .2vw black;;
+}
+
+.attraction-link {
+    margin-bottom: 1vw;
+    margin-left: .3vw;
 }
 
 #gridWrap {
@@ -71,6 +90,9 @@ main {
     float: right;
 }
 
+.attractionData {
+    font-weight: 300;
+}
 
 footer {
     clear: both;
