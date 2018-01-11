@@ -1,6 +1,12 @@
 <div class='attractionData' id={{id}}>
     <p>{{description}}</p>
     {{#if times}}
-        <p>Hours of Operation: {{times}}</p>
+        <p>Hours of Operation:
+            <ul>
+                {{#each times}}
+                    <li>{{this}}</li>
+                {{/each}}
+            </ul>
+        </p>
     {{/if}}
 </div>
