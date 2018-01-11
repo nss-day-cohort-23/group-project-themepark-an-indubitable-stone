@@ -3,12 +3,6 @@ const $ = require('jquery');
 
 const fbURL = "https://an-indubitable-stone.firebaseio.com";
 
-function getTime() {
-  let time = new Date(Date.now());
-  time = time.getHours();
-  return time;
-}
-
 function filterForHappeningNow(data, hour) {
   const regexHour = new RegExp(`${hour}`);
   let happeningNow = [];
