@@ -48,7 +48,7 @@ module.exports.getAreas = function() {
   });
 };
 
-function getAttractionTypes() {
+module.exports.getAttractionTypes = function() {
   return new Promise(function(resolve, reject) {
     $.ajax({
       url: `${fbURL}/attraction_types.json`
@@ -56,7 +56,7 @@ function getAttractionTypes() {
     .done(data => resolve(data))
     .fail(err => reject(err));
   });
-}
+};
 
 module.exports.getAttractions = function(time, id) {
   return new Promise(function(resolve, reject) {
