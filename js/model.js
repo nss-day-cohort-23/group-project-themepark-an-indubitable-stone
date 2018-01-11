@@ -84,13 +84,15 @@ module.exports.getAttractions = function(time, id) {
         data.map( (attraction) => {
           attraction.typeName = types.find( (type) => {
             if (attraction.type_id === type.id) {
-              return type.name; 
+              return type.name;
             }
           });
           return attraction;
         });
         resolve(data);
       });
+      console.log(data);
+      resolve(data);
     })
     .fail(err => reject(err));
   });
