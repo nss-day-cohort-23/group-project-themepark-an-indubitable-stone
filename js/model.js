@@ -1,5 +1,6 @@
 'use strict';
 const $ = require('jquery');
+const view = require('./view');
 
 const fbURL = "https://an-indubitable-stone.firebaseio.com";
 
@@ -66,6 +67,7 @@ module.exports.getAttractions = function(id) {
       } else {
         data = getAttractionsHappeningNow(data, hour);
       }
+      findAttractions(data, id);
       resolve(data);
     })
     .fail(err => reject(err));
@@ -90,4 +92,15 @@ function getAttractionTypes() {
     .done(data => resolve(data))
     .fail(err => reject(err));
   });
+}
+
+function findAttractions(attractions, search) {
+  let selectAtrractions = [];
+  let regexSearch = new RegExp(`${search}`, 'gi');
+  attractions.forEach(att => {
+    if (regexSearch.test(att.name)) {
+      selectAtrractions.push(att.area_id);
+    }
+  });
+  view.highlightArea(selectAtrractions);
 }

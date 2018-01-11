@@ -1,30 +1,68 @@
+$candyCane: rgba(145, 22, 22, 0.801);
+
+nav {
+    margin-bottom: 2vw;
+}
+
 #gridWrap {
     display: grid;
-    grid-template-columns: repeat(3, 12em);
-    grid-template-rows: repeat(3, 7em);
-    grid-gap: 1em;
+    grid-template-columns: repeat(3, 18vw);
+    grid-template-rows: repeat(3, 14vw);
+    grid-gap: .8vw;
     justify-content: center;
     margin: 2em auto;
+    padding: 2em;
     border: 2px solid black;
 }
 
-#gripWrap div {
-    display: grid;
+.parkArea {
+    padding-top: 5.4vw;
     border: 2px solid black;
+    border-radius: 1em;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 2.1vw;
+    color: rgb(255, 234, 234);
+    text-shadow: 
+        .2vw 0 rgb(22, 21, 11),
+        .2vw .2vw .8vw rgb(22, 21, 11),
+        -.2vw -.2vw .8vw rgb(22, 21, 11);;  
+    text-align: center;
+    align-self: stretch;
+}
+
+.parkArea:hover {
+    box-shadow: 0 0 3vw rgb(95, 95, 95);
+    cursor: pointer;
+}
+
+#parkEnter, #parkCenter {
+    box-shadow: none;
+    cursor: initial;
+}
+
+#parkEnter {
+    letter-spacing: .3vw;
+    background: 
+        repeating-linear-gradient(45deg, transparent, transparent .8vw, $candyCane .8vw, $candyCane 1.6vw),
+        repeating-linear-gradient(-45deg, transparent, transparent .8vw,$candyCane .8vw, $candyCane 1.6vw),
+        gold;
+}
+
+#parkCenter {
+    background: repeating-radial-gradient(ellipse at center, darkcyan, rgb(87, 87, 87) 1vw, rgb(222, 255, 38) 2vw);
 }
 
 aside {
     float: left;
     width: 30%;
-    border-right: 1px solid black;
+    border: 1px solid black;
     height: 500px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 main {
     width: 65%;
     float: right;
-    border-left: 1px solid black;
 }
 
 
