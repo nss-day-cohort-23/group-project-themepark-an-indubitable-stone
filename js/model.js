@@ -102,7 +102,7 @@ module.exports.getAttraction = function(attraction) {
   });
 };
 
-function findAttractions(attractions, search) {
+module.exports.findAttractions = (attractions, search) => {
   let selectAtrractions = [];
   let regexSearch = new RegExp(`${search}`, 'gi');
   attractions.forEach(att => {
@@ -111,4 +111,4 @@ function findAttractions(attractions, search) {
     }
   });
   return selectAtrractions;
-}
+};
