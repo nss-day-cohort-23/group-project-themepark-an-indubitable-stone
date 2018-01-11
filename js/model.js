@@ -70,9 +70,14 @@ module.exports.getAttractions = function(time, id) {
       url: `${fbURL}/attractions.json`
     })
     .done(data => {
-      let hour = 15 || getTime();
-      if (hour < 9 || hour > 22) {
-        data = null;
+      console.log(time, id);
+      // Currently checks for whether or not an area_id is passed in & DOES not
+      // filter for time if area_id IS passed in.
+      // If we want to filter for area AND time, then reconfigure this conditional.
+      if (!id){
+        let hour = typeof time === "undefined" ? getTime() : time;
+        console.log(hour);
+        data = hour < 9 || hour > 22 ? {} : filterForHappeningNow(data, hour);
       } else {
       }
       getAttractionTypes().then( types => {
