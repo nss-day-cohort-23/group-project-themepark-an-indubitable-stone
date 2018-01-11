@@ -24,8 +24,16 @@ module.exports.activateListeners = function() {
             });
         }
     });
+
     $("#time-selector").on("change", function(){
         console.log($(this).val());
     });
+
+    $("#sidebar").on("click", ".attraction-link", function(){
+        model.getAttraction({id: $(this).attr("attraction_id")}).then(data => {
+            view.printAttractionDetails(data, $(this));
+        });
+    });
+
 };
 

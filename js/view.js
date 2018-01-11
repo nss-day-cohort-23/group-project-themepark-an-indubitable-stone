@@ -27,12 +27,9 @@ const removeAttractionDetails = function() {
     $(".attractionData").remove();
 };
 
-module.exports.printAttractionDetails = function(attraction) {
+module.exports.printAttractionDetails = function(attraction, $object) {
     removeAttractionDetails();
-
-    $("#sidebar").on("click", ".attractionData", function(){
-        $(this).append(detail(attraction));
-    });
+    $object.append(detail(attraction));
 };
 
 module.exports.printFooterDate = () => {
