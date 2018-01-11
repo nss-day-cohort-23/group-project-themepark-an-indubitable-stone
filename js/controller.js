@@ -22,10 +22,10 @@ const getTime = () => {
 const activateListeners = function() {
     $("#search-field").keypress(function (e) {
         if (e.which == 13) {
-            model.getAttractions($(this).val())
+            model.getAttractions()
             .then((attractions) => {
-                view.highlightArea(attractions);
-                dataComp.groupAttractionsByArea(attractions);
+                let selectAttractions = model.findAttractions(attractions, $(this).val());
+                view.highlightArea(selectAttractions);
             });
         }
     });
@@ -46,6 +46,8 @@ module.exports.loadPage = function()  {
     view.printFooterDate();
     model.getAttractions()
     .then((data) => {
+      dataComp.groupAttractionsByArea(data);
+
       let currentHour = getTime();
 
       if(currentHour > 9 || currentHour < 22) {
