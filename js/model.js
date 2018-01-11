@@ -63,31 +63,7 @@ module.exports.getAttractions = function(time, id) {
     $.ajax({
       url: `${fbURL}/attractions.json`
     })
-    .done(data => {
-      console.log(time, id);
-      // Currently checks for whether or not an area_id is passed in & DOES not
-      // filter for time if area_id IS passed in.
-      // If we want to filter for area AND time, then reconfigure this conditional.
-      if (!id){
-        let hour = typeof time === "undefined" ? getTime() : time;
-        console.log(hour);
-        data = hour < 9 || hour > 22 ? {} : filterForHappeningNow(data, hour);
-      } else {
-      }
-      getAttractionTypes().then( types => {
-        data.map( (attraction) => {
-          attraction.typeName = types.find( (type) => {
-            if (attraction.type_id === type.id) {
-              return type.name;
-            }
-          });
-          return attraction;
-        });
-        resolve(data);
-      });
-      console.log(data);
-      resolve(data);
-    })
+    .done(data => resolve(data))
     .fail(err => reject(err));
   });
 };
