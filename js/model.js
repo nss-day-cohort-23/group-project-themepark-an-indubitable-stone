@@ -39,11 +39,8 @@ module.exports.includeAreas = (attractions, areas) => {
 
 module.exports.includeAttractionTypes = (attractions, types) => {
     attractions = attractions.map( (attraction) => {
-      attraction.typeName = types.find( (type) => {
-        if (attraction.type_id === type.id) {
-          return type.name;
-        }
-      });
+      attraction.typeName = types.find(type => attraction.type_id === type.id);
+      attraction.typeName = attraction.typeName.name;
       return attraction;
     });
     return attractions;
