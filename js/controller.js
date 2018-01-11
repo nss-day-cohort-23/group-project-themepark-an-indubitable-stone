@@ -48,7 +48,13 @@ const activateListeners = function() {
             view.printAttractionDetails(data, $(this));
         });
     });
-
+    $("#gridWrap").on("click", ".parkArea", function(){
+        let areaId = +$(this).attr("area_id");
+        model.getAttractions().then(attractions => {
+            let filteredAttractions = attractions.filter(attraction => attraction.area_id === areaId);
+            view.printAttractions(filteredAttractions);
+        });
+    });
 };
 
 module.exports.loadPage = function()  {
