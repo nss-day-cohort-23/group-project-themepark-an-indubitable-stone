@@ -28,8 +28,13 @@ const removeAttractionDetails = function() {
 };
 
 module.exports.printAttractionDetails = function(attraction, $object) {
-    removeAttractionDetails();
-    $object.append(detail(attraction));
+    if($object.has(".attractionData").length){
+        removeAttractionDetails();
+    } else {
+        removeAttractionDetails();
+        $object.append(detail(attraction));
+    }
+    
 };
 
 module.exports.printFooterDate = () => {

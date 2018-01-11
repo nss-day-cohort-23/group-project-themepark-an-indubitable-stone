@@ -3,13 +3,7 @@ const $ = require('jquery');
 
 const fbURL = "https://an-indubitable-stone.firebaseio.com";
 
-function getTime() {
-  let time = new Date(Date.now());
-  time = time.getHours();
-  return time;
-}
-
-function getAttractionsHappeningNow(data, hour) {
+module.exports.filterForHappeningNow = (data, hour) => {
   const regexHour = new RegExp(`${hour}`);
   let happeningNow = [];
 
@@ -32,7 +26,20 @@ function getAttractionsHappeningNow(data, hour) {
   });
 
   return happeningNow;
-}
+};
+
+
+module.exports.includeAttractionTypes = (attractions, types) => {
+    attractions = attractions.map( (attraction) => {
+      attraction.typeName = types.find( (type) => {
+        if (attraction.type_id === type.id) {
+          return type.name;
+        }
+      });
+      return attraction;
+    });
+    return attractions;
+};
 
 module.exports.getParkInfo = function() {
   return new Promise(function(resolve, reject) {
@@ -54,7 +61,7 @@ module.exports.getAreas = function() {
   });
 };
 
-function getAttractionTypes() {
+module.exports.getAttractionTypes = function() {
   return new Promise(function(resolve, reject) {
     $.ajax({
       url: `${fbURL}/attraction_types.json`
@@ -62,32 +69,14 @@ function getAttractionTypes() {
     .done(data => resolve(data))
     .fail(err => reject(err));
   });
-}
+};
 
-module.exports.getAttractions = function(id) {
+module.exports.getAttractions = function(time, id) {
   return new Promise(function(resolve, reject) {
     $.ajax({
       url: `${fbURL}/attractions.json`
     })
-    .done(data => {
-      let hour = 15 || getTime();
-      if (hour < 9 || hour > 22) {
-        data = null;
-      } else {
-        data = getAttractionsHappeningNow(data, hour);
-      }
-      getAttractionTypes().then( types => {
-        data.map( (attraction) => {
-          attraction.typeName = types.find( (type) => {
-            if (attraction.type_id === type.id) {
-              return type.name; 
-            }
-          });
-          return attraction;
-        });
-        resolve(data);
-      });
-    })
+    .done(data => resolve(data))
     .fail(err => reject(err));
   });
 };
@@ -102,17 +91,7 @@ module.exports.getAttraction = function(attraction) {
   });
 };
 
-function getAttractionTypes() {
-  return new Promise(function(resolve, reject) {
-    $.ajax({
-      url: `${fbURL}/attraction_types.json`
-    })
-    .done(data => resolve(data))
-    .fail(err => reject(err));
-  });
-}
-
-function findAttractions(attractions, search) {
+module.exports.findAttractions = (attractions, search) => {
   let selectAtrractions = [];
   let regexSearch = new RegExp(`${search}`, 'gi');
   attractions.forEach(att => {
@@ -121,4 +100,4 @@ function findAttractions(attractions, search) {
     }
   });
   return selectAtrractions;
-}
+};
