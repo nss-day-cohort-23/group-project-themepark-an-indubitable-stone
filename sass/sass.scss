@@ -119,11 +119,24 @@ footer {
     transition: all 1s;
 }
 
+body {
+    animation: fadeIn 0.5s;
+}
+
 @keyframes glow {
     0% {
         box-shadow: inset 0px 0px 0px 0px yellow;
     }
     100% {
         box-shadow: inset 0px 0px 75px 0px yellow;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
