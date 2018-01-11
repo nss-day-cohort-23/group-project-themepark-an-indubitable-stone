@@ -28,6 +28,14 @@ module.exports.filterForHappeningNow = (data, hour) => {
   return happeningNow;
 };
 
+module.exports.includeAreas = (attractions, areas) => {
+    attractions = attractions.map(attraction => {
+        attraction.areaName = areas.find(area => attraction.area_id === area.id);
+        attraction.areaName = attraction.areaName.name;
+        return attraction;
+    });
+    return attractions;
+};
 
 module.exports.includeAttractionTypes = (attractions, types) => {
     attractions = attractions.map( (attraction) => {
