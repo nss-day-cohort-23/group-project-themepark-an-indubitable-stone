@@ -24,14 +24,14 @@ module.exports.loadPage = function()  {
     .then((data) => {
         view.printAttractions(data);
     });
-    module.exports.activateListeners();
+    activateListeners();
     model.getAreas().then((data) => view.colorGrid(data));
     setDefaultTime();
-  
+
 };
 
 
-module.exports.activateListeners = function() {
+const activateListeners = function() {
     $("#search-field").keypress(function (e) {
         if (e.which == 13) {
             model.getAttractions($(this).val())
@@ -53,4 +53,3 @@ module.exports.activateListeners = function() {
     });
 
 };
-
