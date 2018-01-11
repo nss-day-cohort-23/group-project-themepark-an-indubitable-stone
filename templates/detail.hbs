@@ -1,4 +1,14 @@
-<div class='attractionData' id={{detail.id}}>
-<p>{{detail.description}}</p>
-<p>Hours of Operation: {{detail.times}}</p>
+<div class='attractionData'>
+    <p>{{description}}</p>
+    {{#if times}}
+        <p>Hours of Operation:
+            <ul>
+                {{#each times}}
+                    <li>{{this}}</li>
+                {{/each}}
+            </ul>
+        </p>
+    {{else}}
+        <p>Hours of Operation: All Day</p>
+    {{/if}}
 </div>
