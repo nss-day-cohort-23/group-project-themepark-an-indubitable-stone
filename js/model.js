@@ -28,6 +28,19 @@ module.exports.filterForHappeningNow = (data, hour) => {
   return happeningNow;
 };
 
+
+module.exports.includeAttractionTypes = (attractions, types) => {
+    attractions = attractions.map( (attraction) => {
+      attraction.typeName = types.find( (type) => {
+        if (attraction.type_id === type.id) {
+          return type.name;
+        }
+      });
+      return attraction;
+    });
+    return attractions;
+};
+
 module.exports.getParkInfo = function() {
   return new Promise(function(resolve, reject) {
     $.ajax({
