@@ -71,7 +71,7 @@ module.exports.getAttractionTypes = function() {
   });
 };
 
-module.exports.getAttractions = function(time, id) {
+module.exports.getAttractions = function() {
   return new Promise(function(resolve, reject) {
     $.ajax({
       url: `${fbURL}/attractions.json`
