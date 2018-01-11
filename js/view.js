@@ -10,7 +10,7 @@ module.exports.printAttractions = function(data) {
         attractionsArray.push(data[key]);
     });
     attractionsArray.forEach( attraction => {
-        $("#sidebar").append(`<p><a href="">${attraction.name}</a></p>`);
+        $("#sidebar").append(`<p><a href="#">${attraction.name}</a></p>`);
     });
 };
 
@@ -26,12 +26,16 @@ module.exports.highlightArea = function(ids) {
     });
 };
 
-module.exports.printAttractionDetails = function() {
+module.exports.printAttractionDetails = function(attraction) {
+    removeAttractionDetails();
 
+    $("#sidebar").on("click", ".attractionData", function(){
+        $(this).append(detail(attraction));
+    });
 };
 
-module.exports.removeAttractionDetails = function() {
-
+const removeAttractionDetails = function() {
+    $(".attractionData").remove();
 };
 
 module.exports.printFooterDate = () => {
