@@ -33,7 +33,7 @@ module.exports.printAttractionDetails = function(attraction) {
 };
 
 module.exports.removeAttractionDetails = function() {
-
+    $(".attractionDetails").remove();
 };
 
 module.exports.printFooterDate = () => {
