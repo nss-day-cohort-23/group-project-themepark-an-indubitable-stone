@@ -16,17 +16,28 @@ h2 {
 
 a {
     text-decoration: none;
+    transition: all .2s;
 }
 
 a:hover {
-    color: rgb(236, 236, 236);
-    text-shadow: 0 0 .02vw black, 0 0 .2vw black;;
+    text-align: center;
+    color: rgb(0, 0, 214);
+    letter-spacing: .03vw;
+    text-shadow: 0 0 .04vw rgb(255, 255, 255), 0 0 .2vw black;;
 }
 
 .attraction-link {
     margin-bottom: 1vw;
     margin-left: .3vw;
 }
+
+.attractionData {
+    background: linear-gradient(to left top, rgba(176, 196, 222, 0.678), rgba(226, 237, 252, 0.678));
+    border-radius: 1vw;
+    padding: 1.2vw;
+    font-weight: 300;
+}
+
 
 #gridWrap {
     display: grid;
@@ -88,10 +99,6 @@ aside {
 main {
     width: 65%;
     float: right;
-}
-
-.attractionData {
-    font-weight: 300;
 }
 
 footer {
