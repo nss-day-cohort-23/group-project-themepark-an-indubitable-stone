@@ -1,3 +1,6 @@
-{{#each attraction}}
-  <div id={{attraction.id}} class="attraction-link"><a href="#">{{attraction.name}} ({{attraction.type}})</a></div>
+{{#each object}}
+  <div id={{id}} class="attraction-link">
+    <a href="#">{{name}} ({{typeName.name}})</a></div>
 {{/each}}
+
+{{!-- {{attraction}} --}}

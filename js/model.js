@@ -54,6 +54,16 @@ module.exports.getAreas = function() {
   });
 };
 
+function getAttractionTypes() {
+  return new Promise(function(resolve, reject) {
+    $.ajax({
+      url: `${fbURL}/attraction_types.json`
+    })
+    .done(data => resolve(data))
+    .fail(err => reject(err));
+  });
+}
+
 module.exports.getAttractions = function(id) {
   return new Promise(function(resolve, reject) {
     $.ajax({
@@ -66,7 +76,17 @@ module.exports.getAttractions = function(id) {
       } else {
         data = getAttractionsHappeningNow(data, hour);
       }
-      resolve(data);
+      getAttractionTypes().then( types => {
+        data.map( (attraction) => {
+          attraction.typeName = types.find( (type) => {
+            if (attraction.type_id === type.id) {
+              return type.name; 
+            }
+          });
+          return attraction;
+        });
+        resolve(data);
+      });
     })
     .fail(err => reject(err));
   });
@@ -82,12 +102,3 @@ module.exports.getAttraction = function(attraction) {
   });
 };
 
-function getAttractionTypes() {
-  return new Promise(function(resolve, reject) {
-    $.ajax({
-      url: `${fbURL}/attraction_types.json`
-    })
-    .done(data => resolve(data))
-    .fail(err => reject(err));
-  });
-}

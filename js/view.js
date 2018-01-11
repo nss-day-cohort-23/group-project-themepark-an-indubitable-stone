@@ -4,14 +4,11 @@ const detail = require("../templates/detail.hbs");
 const sidebar = require("../templates/sidebar.hbs");
 
 module.exports.printAttractions = function(data) {
-    let attractionsArray = [];
-    let keys = Object.keys(data);
-    keys.forEach( (key) => {
-        attractionsArray.push(data[key]);
-    });
-    attractionsArray.forEach( attraction => {
-        $("#sidebar").append(`<p><a href="#">${attraction.name}</a></p>`);
-    });
+    let attr = {};
+    attr = {object: data};
+    $("#sidebar").append(sidebar(attr));
+    console.log('data', attr);
+    
 };
 
 module.exports.highlightArea = function(ids) {
@@ -26,6 +23,10 @@ module.exports.highlightArea = function(ids) {
     });
 };
 
+const removeAttractionDetails = function() {
+    $(".attractionData").remove();
+};
+
 module.exports.printAttractionDetails = function(attraction) {
     removeAttractionDetails();
 
@@ -34,9 +35,6 @@ module.exports.printAttractionDetails = function(attraction) {
     });
 };
 
-const removeAttractionDetails = function() {
-    $(".attractionData").remove();
-};
 
 module.exports.printFooterDate = () => {
     let todaysDate = new Date(Date.now()),
