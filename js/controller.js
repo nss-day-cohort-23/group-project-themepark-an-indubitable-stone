@@ -33,6 +33,13 @@ const activateListeners = function() {
     $("#time-selector").on("change", function(){
         let hour = $(this).val().match(/^\d\d/);
 
+        model.getAttractions()
+        .then(data => {
+            console.log(data);
+            data = model.filterForHappeningNow(data, hour);
+            view.printAttractions(data);
+        })
+        .catch(err => console.log(err));
     });
 
     $("#sidebar").on("click", ".attraction-link", function(){
