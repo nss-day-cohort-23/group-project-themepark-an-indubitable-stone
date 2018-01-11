@@ -33,15 +33,25 @@ const activateListeners = function() {
     });
 
     $("#time-selector").on("change", function(){
-        let hour = $(this).val().match(/^\d\d/);
+        let hour = $(this).val().match(/^\d+/)[0];
 
-        model.getAttractions()
-        .then(data => {
-            console.log(data);
-            data = model.filterForHappeningNow(data, hour);
-            view.printAttractions(data);
-        })
-        .catch(err => console.log(err));
+        if(hour >= 9 && hour < 22) {
+            model.getAttractions()
+            .then(data => {
+
+                data = model.filterForHappeningNow(data, hour);
+                model.getAreas()
+                .then(areas => {
+
+                    data = model.includeAreas(data, areas);
+                    view.printAttractions(data);
+                })
+                .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
+        } else {
+            view.printAttractions();
+        }
     });
 
     $("#sidebar").on("click", ".attraction-link", function(){
@@ -76,8 +86,7 @@ module.exports.loadPage = function()  {
 
       let currentHour = getHours();
 
-
-      if(currentHour > 9 || currentHour < 22) {
+      if(currentHour >= 9 && currentHour < 22) {
           let attractions = model.filterForHappeningNow(data, currentHour);
           model.getAttractionTypes()
           .then(types => {
