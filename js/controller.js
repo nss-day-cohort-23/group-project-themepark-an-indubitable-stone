@@ -33,7 +33,7 @@ const activateListeners = function() {
     });
 
     $("#time-selector").on("change", function(){
-        let hour = $(this).val().match(/^\d\d/);
+        let hour = $(this).val().match(/^\d+/)[0];
 
         model.getAttractions()
         .then(data => {
