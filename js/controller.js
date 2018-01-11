@@ -4,6 +4,14 @@ const model = require("./model");
 const view = require("./view");
 const dataComp = require("./dataManipulation");
 
+const setDefaultTime = () => {
+    let currentTime = new Date(Date.now()),
+    currentHours = currentTime.getHours(),
+    currentMinutes = currentTime.getMinutes();
+
+    $("#time-selector").val(`${currentHours}:${currentMinutes}`);
+};
+
 module.exports.loadPage = function()  {
     view.printFooterDate();
     model.getAttractions()
@@ -12,7 +20,10 @@ module.exports.loadPage = function()  {
     });
     module.exports.activateListeners();
     model.getAreas().then((data) => view.colorGrid(data));
+    setDefaultTime();
+  
 };
+
 
 module.exports.activateListeners = function() {
     $("#search-field").keypress(function (e) {
