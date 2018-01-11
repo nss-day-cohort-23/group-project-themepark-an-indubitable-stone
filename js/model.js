@@ -3,7 +3,7 @@ const $ = require('jquery');
 
 const fbURL = "https://an-indubitable-stone.firebaseio.com";
 
-function filterForHappeningNow(data, hour) {
+module.exports.filterForHappeningNow = (data, hour) => {
   const regexHour = new RegExp(`${hour}`);
   let happeningNow = [];
 
@@ -26,7 +26,7 @@ function filterForHappeningNow(data, hour) {
   });
 
   return happeningNow;
-}
+};
 
 module.exports.getParkInfo = function() {
   return new Promise(function(resolve, reject) {
