@@ -12,5 +12,4 @@ module.exports.groupAttractionsByArea = (attractions) => {
             }
         });
     }
-    console.log("areas by id", park);
 };
