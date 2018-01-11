@@ -18,7 +18,10 @@ module.exports.activateListeners = function() {
     $("#search-field").keypress(function (e) {
         if (e.which == 13) {
             model.getAttractions($(this).val())
-            .then((attractions) => dataComp.groupAttractionsByArea(attractions));
+            .then((attractions) => {
+                view.highlightArea(attractions);
+                dataComp.groupAttractionsByArea(attractions);
+            });
         }
     });
     $("#time-selector").on("change", function(){

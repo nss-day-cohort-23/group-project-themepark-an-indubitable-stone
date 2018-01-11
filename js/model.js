@@ -1,6 +1,5 @@
 'use strict';
 const $ = require('jquery');
-const view = require('./view');
 
 const fbURL = "https://an-indubitable-stone.firebaseio.com";
 
@@ -67,7 +66,7 @@ module.exports.getAttractions = function(id) {
       } else {
         data = getAttractionsHappeningNow(data, hour);
       }
-      findAttractions(data, id);
+      // data = findAttractions(data, id);
       resolve(data);
     })
     .fail(err => reject(err));
@@ -102,5 +101,5 @@ function findAttractions(attractions, search) {
       selectAtrractions.push(att.area_id);
     }
   });
-  view.highlightArea(selectAtrractions);
+  return selectAtrractions;
 }
