@@ -1,26 +1,62 @@
 $candyCane: rgba(145, 22, 22, 0.801);
 
-nav {
-    margin-bottom: 2vw;
+body {
+    font-family: 'Heebo', Helvetica, sans-serif;
 }
+
+nav {
+    margin-bottom: 1vw;
+}
+
+h2 {
+    display: inline;
+    margin-right: 6vw;
+    font-family: 'Shrikhand', Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    transition: all .2s;
+}
+
+a:hover {
+    text-align: center;
+    color: rgb(0, 0, 214);
+    letter-spacing: .03vw;
+    text-shadow: 0 0 .04vw rgb(255, 255, 255), 0 0 .2vw black;;
+}
+
+.attraction-link {
+    margin-bottom: 1vw;
+    margin-left: .3vw;
+}
+
+.attractionData {
+    background: linear-gradient(to left top, rgba(176, 196, 222, 0.678), rgba(226, 237, 252, 0.678));
+    border-radius: 1vw;
+    padding: 1.2vw;
+    font-weight: 300;
+}
+
 
 #gridWrap {
     display: grid;
-    grid-template-columns: repeat(3, 18vw);
-    grid-template-rows: repeat(3, 14vw);
-    grid-gap: .8vw;
+    grid-template-columns: repeat(3, 15vw);
+    grid-template-rows: repeat(3, 10vw);
+    grid-row-gap: 1.7vw;
+    grid-column-gap: 2.7vw;
     justify-content: center;
-    margin: 2em auto;
-    padding: 2em;
+    margin: 1em auto;
+    padding: 1.3vw;
     border: 2px solid black;
 }
 
 .parkArea {
-    padding-top: 5.4vw;
+    padding-top: 3.9vw;
     border: 2px solid black;
     border-radius: 1em;
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 2.1vw;
+    font-size: 1.8vw;
     color: rgb(255, 234, 234);
     text-shadow: 
         .2vw 0 rgb(22, 21, 11),
@@ -64,7 +100,6 @@ main {
     width: 65%;
     float: right;
 }
-
 
 footer {
     clear: both;
