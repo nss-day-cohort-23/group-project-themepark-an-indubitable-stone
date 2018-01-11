@@ -12,20 +12,35 @@ const setDefaultTime = () => {
     $("#time-selector").val(`${currentHours}:${currentMinutes}`);
 };
 
+const getTime = () => {
+  let time = new Date(Date.now());
+  time = time.getHours();
+  return time;
+};
+
 module.exports.loadPage = function()  {
     view.printFooterDate();
     model.getAttractions()
     .then((data) => {
-        view.printAttractions(data);
+      let currentHour = getTime();
+      if(currentHour > 9 || currentHour < 22) {
+          let attractions = model.filterForHappeningNow(data, currentHour);
+          model.getAttractionTypes()
+          .then(types => {
+              attractions = model.includeAttractionTypes(attractions, types);
+              view.printAttractions(attractions);
+          })
+          .catch(err => console.log(err));
+      }
     });
-    module.exports.activateListeners();
+    activateListeners();
     model.getAreas().then((data) => view.colorGrid(data));
     setDefaultTime();
-  
+
 };
 
 
-module.exports.activateListeners = function() {
+const activateListeners = function() {
     $("#search-field").keypress(function (e) {
         if (e.which == 13) {
             model.getAttractions($(this).val())
@@ -47,4 +62,3 @@ module.exports.activateListeners = function() {
     });
 
 };
-
