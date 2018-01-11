@@ -10,7 +10,7 @@ module.exports.printAttractions = function(data) {
         attractionsArray.push(data[key]);
     });
     attractionsArray.forEach( attraction => {
-        $("#sidebar").append(`<p><a href="">${attraction.name}</a></p>`);
+        $("#sidebar").append(`<p><a href="#">${attraction.name}</a></p>`);
     });
 };
 
