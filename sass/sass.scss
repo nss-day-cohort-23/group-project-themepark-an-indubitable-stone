@@ -108,4 +108,35 @@ footer {
 
 .highlighted {
     box-shadow: inset 0px 0px 25px 0px yellow;
+}   
+
+.parkArea:hover{
+    box-shadow: inset 0px 0px 40px 0px yellow;
+}   
+
+.parkArea {
+    animation-name: glow;
+    transition: all 1s;
+}
+
+* {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: inset 0px 0px 0px 0px yellow;
+    }
+    100% {
+        box-shadow: inset 0px 0px 75px 0px yellow;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
