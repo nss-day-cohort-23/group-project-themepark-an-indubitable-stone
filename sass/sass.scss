@@ -111,13 +111,12 @@ footer {
 }   
 
 .parkArea:hover{
-    animation-name: glow;
-    animation-duration: 3s;
-}
+    box-shadow: inset 0px 0px 40px 0px yellow;
+}   
 
-.parkArea:blur {
-    animation-name: unglow;
-    animation-duration: 3s;
+.parkArea {
+    animation-name: glow;
+    transition: all 1s;
 }
 
 @keyframes glow {
@@ -125,12 +124,6 @@ footer {
         box-shadow: inset 0px 0px 0px 0px yellow;
     }
     100% {
-        box-shadow: inset 0px 40px 0px 0px yellow;
-    }
-}
-
-@keyframes unglow {
-    100% {
-        box-shadow: inset 0px 0px 0px 0px yellow;
+        box-shadow: inset 0px 0px 75px 0px yellow;
     }
 }
