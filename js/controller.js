@@ -30,7 +30,7 @@ module.exports.activateListeners = function() {
     });
 
     $("#sidebar").on("click", ".attraction-link", function(){
-        model.getAttraction({id: $(this).attr("id")}).then(data => {
+        model.getAttraction({id: $(this).attr("attraction_id")}).then(data => {
             view.printAttractionDetails(data, $(this));
         });
     });
