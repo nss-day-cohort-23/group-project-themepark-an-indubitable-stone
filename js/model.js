@@ -95,7 +95,7 @@ module.exports.getAttractions = function(id) {
 module.exports.getAttraction = function(attraction) {
   return new Promise(function(resolve, reject) {
     $.ajax({
-      url: `${fbURL}/attractions/${attraction.id}.json`
+      url: `${fbURL}/attractions/${attraction.id-1}.json`
     })
     .done(data => resolve(data))
     .fail(err => reject(err));
