@@ -12,7 +12,7 @@ const setDefaultTime = () => {
     $("#time-selector").val(`${currentHours}:${currentMinutes}`);
 };
 
-const getTime = () => {
+const getHours = () => {
   let time = new Date(Date.now());
   time = time.getHours();
   return time;
@@ -46,7 +46,7 @@ module.exports.loadPage = function()  {
     view.printFooterDate();
     model.getAttractions()
     .then((data) => {
-      let currentHour = getTime();
+      let currentHour = getHours();
 
       if(currentHour > 9 || currentHour < 22) {
           let attractions = model.filterForHappeningNow(data, currentHour);
