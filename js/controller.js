@@ -13,7 +13,7 @@ const setDefaultTime = () => {
     $("#time-selector").val(`${currentHours}:${currentMinutes}`);
 };
 
-const getTime = () => {
+const getHours = () => {
   let time = new Date(Date.now());
   time = time.getHours();
   return time;
@@ -32,7 +32,15 @@ const activateListeners = function() {
     });
 
     $("#time-selector").on("change", function(){
-        console.log($(this).val());
+        let hour = $(this).val().match(/^\d\d/);
+
+        model.getAttractions()
+        .then(data => {
+            console.log(data);
+            data = model.filterForHappeningNow(data, hour);
+            view.printAttractions(data);
+        })
+        .catch(err => console.log(err));
     });
 
     $("#sidebar").on("click", ".attraction-link", function(){
@@ -53,7 +61,7 @@ module.exports.loadPage = function()  {
     view.printFooterDate();
     model.getAttractions()
     .then((data) => {
-      let currentHour = getTime();
+      let currentHour = getHours();
 
       if(currentHour > 9 || currentHour < 22) {
           let attractions = model.filterForHappeningNow(data, currentHour);
