@@ -27,7 +27,8 @@ const activateListeners = function() {
             .then((attractions) => {
                 let selectAttractions = model.findAttractions(attractions, $(this).val());
                 view.highlightArea(selectAttractions);
-            });
+            })
+            .catch(error => console.log(error));
         }
     });
 
@@ -44,18 +45,28 @@ const activateListeners = function() {
     });
 
     $("#sidebar").on("click", ".attraction-link", function(){
-        model.getAttraction({id: $(this).attr("attraction_id")}).then(data => {
+        model.getAttraction({id: $(this).attr("attraction_id")})
+        .then(data => {
             view.printAttractionDetails(data, $(this));
-        });
+        })
+        .catch(error => console.log(error));
     });
+
     $("#gridWrap").on("click", ".parkArea", function(){
         let areaId = +$(this).attr("area_id");
         model.getAttractions().then(attractions => {
-            let filteredAttractions = attractions.filter(attraction => attraction.area_id === areaId);
-            view.printAttractions(filteredAttractions);
+            model.getAttractionTypes()
+            .then(types => {
+                let attractionsWithTypes = model.includeAttractionTypes(attractions, types),
+                filteredAttractions = attractionsWithTypes.filter(attraction => attraction.area_id === areaId);
+                view.printAttractions(filteredAttractions);
+            })
+            .catch(error => console.log(error));
         });
     });
 };
+
+
 
 module.exports.loadPage = function()  {
     view.printFooterDate();
