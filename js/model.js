@@ -64,7 +64,7 @@ function getAttractionTypes() {
   });
 }
 
-module.exports.getAttractions = function(id) {
+module.exports.getAttractions = function(time, id) {
   return new Promise(function(resolve, reject) {
     $.ajax({
       url: `${fbURL}/attractions.json`
