@@ -26,16 +26,16 @@ module.exports.highlightArea = function(ids) {
     });
 };
 
+const removeAttractionDetails = function() {
+    $(".attractionData").remove();
+};
+
 module.exports.printAttractionDetails = function(attraction) {
     removeAttractionDetails();
 
     $("#sidebar").on("click", ".attractionData", function(){
         $(this).append(detail(attraction));
     });
-};
-
-const removeAttractionDetails = function() {
-    $(".attractionData").remove();
 };
 
 module.exports.printFooterDate = () => {

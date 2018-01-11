@@ -6,10 +6,10 @@ const dataComp = require("./dataManipulation");
 
 module.exports.loadPage = function()  {
     view.printFooterDate();
-    // model.getAttractions()
-    // .then((data) => {
-    //     view.printAttractions(data);
-    // });
+    model.getAttractions()
+    .then((data) => {
+        view.printAttractions(data);
+    });
     module.exports.activateListeners();
     model.getAreas().then((data) => view.colorGrid(data));
 };
