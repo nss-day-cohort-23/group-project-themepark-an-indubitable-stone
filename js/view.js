@@ -4,11 +4,12 @@ const detail = require("../templates/detail.hbs");
 const sidebar = require("../templates/sidebar.hbs");
 
 module.exports.printAttractions = function(data) {
+    $("#sidebar").empty();
     let attr = {};
     attr = {object: data};
     $("#sidebar").append(sidebar(attr));
     console.log('data', attr);
-    
+
 };
 
 module.exports.highlightArea = function(ids) {
@@ -37,10 +38,10 @@ module.exports.printFooterDate = () => {
     day = todaysDate.getDay(),
     month = todaysDate.getMonth(),
     year = todaysDate.getFullYear();
-    
+
     let monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
-    
+
     $("#footer-date").text(`${monthNames[month+1]} ${day} ${year} `);
 };
 
