@@ -12,4 +12,6 @@ module.exports.groupAttractionsByArea = (attractions) => {
             }
         });
     }
+   console.log("areas by area_id", park);
+// be58c53cc18388f79efd01034c65a4013fb6d7d6
 };
