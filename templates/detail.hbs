@@ -1,4 +1,6 @@
-<div class='attractionData' id={{detail.id}}>
-<p>{{detail.description}}</p>
-<p>Hours of Operation: {{detail.times}}</p>
+<div class='attractionData' id={{id}}>
+    <p>{{description}}</p>
+    {{#if times}}
+        <p>Hours of Operation: {{times}}</p>
+    {{/if}}
 </div>
