@@ -9,7 +9,7 @@ function getTime() {
   return time;
 }
 
-function getAttractionsHappeningNow(data, hour) {
+function filterForHappeningNow(data, hour) {
   const regexHour = new RegExp(`${hour}`);
   let happeningNow = [];
 
@@ -74,7 +74,6 @@ module.exports.getAttractions = function(id) {
       if (hour < 9 || hour > 22) {
         data = null;
       } else {
-        data = getAttractionsHappeningNow(data, hour);
       }
       getAttractionTypes().then( types => {
         data.map( (attraction) => {
