@@ -31,7 +31,8 @@ const activateListeners = function() {
     });
 
     $("#time-selector").on("change", function(){
-        console.log($(this).val());
+        let hour = $(this).val().match(/^\d\d/);
+
     });
 
     $("#sidebar").on("click", ".attraction-link", function(){
