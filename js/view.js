@@ -2,6 +2,7 @@
 const $ = require('jquery');
 const detail = require("../templates/detail.hbs");
 const sidebar = require("../templates/sidebar.hbs");
+const attractionsGrid = require("../templates/attractionsGrid.hbs");
 
 module.exports.printAttractions = function(data) {
     $("#sidebar").empty();
