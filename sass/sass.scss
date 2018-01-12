@@ -109,3 +109,8 @@ footer {
 .highlighted {
     box-shadow: inset 0px 0px 25px 0px yellow;
 }
+
+// DEV: visualizes the attractions gridWrap. Remove once fully functioning
+.area-grid-item {
+    border: 1px solid black;
+}
