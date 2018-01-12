@@ -58,6 +58,17 @@ module.exports.colorGrid = function(areas, park) {
         columnsPercent = 100 / columns + '%',
         rows, rowsPercent;
 
+        // DLK -
+        // This ternary operator checks to see whether creating equally sized rows
+        // & columns in a CSS grid will end up with an empty row. E.g., park area
+        // at grid position 8 has 20 attractions. If a 5 x 5 grid for the attractions
+        // is generated then there'll be an empty row. Thus, the grid needs one
+        // less row & different percentages are needed.
+        //
+        // tl;dr: make it look seeeeexy.
+        rows = attractions.length / (columns - 1) === columns ? columns - 1 : columns;
+        rowsPercent = 100 / rows + '%';
+
         $areaElm.css({
             "background-color": `#${i.colorTheme}`,
             "grid-template":
