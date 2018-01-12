@@ -50,8 +50,14 @@ module.exports.printFooterDate = () => {
 };
 
 
-module.exports.colorGrid = function(areas) {
+module.exports.colorGrid = function(areas, park) {
     areas.forEach( i => {
+        let $areaElm = $(`div#park${i.id}`),
+        attractions = park[`park${i.id}`],
+        columns = Math.ceil(Math.sqrt(attractions.length)),
+        columnsPercent = 100 / columns + '%',
+        rows, rowsPercent;
+
         $areaElm.css({
             "background-color": `#${i.colorTheme}`,
             "grid-template":
