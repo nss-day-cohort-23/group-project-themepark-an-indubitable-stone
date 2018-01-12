@@ -93,6 +93,8 @@ module.exports.loadPage = function()  {
     model.getAttractions()
     .then((data) => {
       let park = dataComp.groupAttractionsByArea(data);
+      model.getAreas()
+      .then((areas) => view.colorGrid(areas, park));
 
       let currentHour = getHours();
 
@@ -108,7 +110,6 @@ module.exports.loadPage = function()  {
     });
 
     activateListeners();
-    model.getAreas().then((data) => view.colorGrid(data));
     setDefaultTime();
 
 };
