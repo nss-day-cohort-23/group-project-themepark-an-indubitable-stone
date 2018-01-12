@@ -52,6 +52,11 @@ module.exports.printFooterDate = () => {
 
 module.exports.colorGrid = function(areas) {
     areas.forEach( i => {
-        $(`div#park${i.id}`).css("background-color", `#${i.colorTheme}`);
+        $areaElm.css({
+            "background-color": `#${i.colorTheme}`,
+            "grid-template":
+                `repeat(${rows}, ${rowsPercent}) / repeat(${columns}, ${columnsPercent})`
+        });
+
     });
 };
