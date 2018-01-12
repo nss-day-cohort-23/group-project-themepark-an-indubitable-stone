@@ -92,7 +92,7 @@ module.exports.loadPage = function()  {
     view.printFooterDate();
     model.getAttractions()
     .then((data) => {
-      dataComp.groupAttractionsByArea(data);
+      let park = dataComp.groupAttractionsByArea(data);
 
       let currentHour = getHours();
 
