@@ -75,5 +75,8 @@ module.exports.colorGrid = function(areas, park) {
                 `repeat(${rows}, ${rowsPercent}) / repeat(${columns}, ${columnsPercent})`
         });
 
+        attractions.forEach(attraction => {
+            $areaElm.append(attractionsGrid(attraction));
+        });
     });
 };
