@@ -52,7 +52,6 @@ a:hover {
 }
 
 .parkArea {
-    padding-top: 3.9vw;
     border: 2px solid black;
     border-radius: 1em;
     font-family: Helvetica, Arial, sans-serif;
@@ -64,6 +63,7 @@ a:hover {
         -.2vw -.2vw .8vw rgb(22, 21, 11);
     text-align: center;
     align-self: stretch;
+    display: grid;
 }
 
 .parkArea:hover {
