@@ -9,8 +9,6 @@ module.exports.printAttractions = function(data) {
     let attr = {};
     attr = {object: data};
     $("#sidebar").append(sidebar(attr));
-    console.log('data', attr);
-
 };
 
 module.exports.highlightArea = function(ids) {
