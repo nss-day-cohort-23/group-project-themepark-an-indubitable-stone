@@ -2,14 +2,13 @@
 const $ = require('jquery');
 const detail = require("../templates/detail.hbs");
 const sidebar = require("../templates/sidebar.hbs");
+const attractionsGrid = require("../templates/attractionsGrid.hbs");
 
 module.exports.printAttractions = function(data) {
     $("#sidebar").empty();
     let attr = {};
     attr = {object: data};
     $("#sidebar").append(sidebar(attr));
-    console.log('data', attr);
-
 };
 
 module.exports.highlightArea = function(ids) {
@@ -51,8 +50,33 @@ module.exports.printFooterDate = () => {
 };
 
 
-module.exports.colorGrid = function(areas) {
+module.exports.colorGrid = function(areas, park) {
     areas.forEach( i => {
-        $(`div#park${i.id}`).css("background-color", `#${i.colorTheme}`);
+        let $areaElm = $(`div#park${i.id}`),
+        attractions = park[`park${i.id}`],
+        columns = Math.ceil(Math.sqrt(attractions.length)),
+        columnsPercent = 100 / columns + '%',
+        rows, rowsPercent;
+
+        // DLK -
+        // This ternary operator checks to see whether creating equally sized rows
+        // & columns in a CSS grid will end up with an empty row. E.g., park area
+        // at grid position 8 has 20 attractions. If a 5 x 5 grid for the attractions
+        // is generated then there'll be an empty row. Thus, the grid needs one
+        // less row & different percentages are needed.
+        //
+        // tl;dr: make it look seeeeexy.
+        rows = attractions.length / (columns - 1) === columns ? columns - 1 : columns;
+        rowsPercent = 100 / rows + '%';
+
+        $areaElm.css({
+            "background-color": `#${i.colorTheme}`,
+            "grid-template":
+                `repeat(${rows}, ${rowsPercent}) / repeat(${columns}, ${columnsPercent})`
+        });
+
+        attractions.forEach(attraction => {
+            $areaElm.append(attractionsGrid(attraction));
+        });
     });
 };

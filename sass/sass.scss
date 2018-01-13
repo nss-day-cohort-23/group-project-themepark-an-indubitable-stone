@@ -52,18 +52,18 @@ a:hover {
 }
 
 .parkArea {
-    padding-top: 3.9vw;
     border: 2px solid black;
     border-radius: 1em;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 1.8vw;
     color: rgb(255, 234, 234);
-    text-shadow: 
+    text-shadow:
         .2vw 0 rgb(22, 21, 11),
         .2vw .2vw .8vw rgb(22, 21, 11),
-        -.2vw -.2vw .8vw rgb(22, 21, 11);;  
+        -.2vw -.2vw .8vw rgb(22, 21, 11);
     text-align: center;
     align-self: stretch;
+    display: grid;
 }
 
 .parkArea:hover {
@@ -78,7 +78,7 @@ a:hover {
 
 #parkEnter {
     letter-spacing: .3vw;
-    background: 
+    background:
         repeating-linear-gradient(45deg, transparent, transparent .8vw, $candyCane .8vw, $candyCane 1.6vw),
         repeating-linear-gradient(-45deg, transparent, transparent .8vw,$candyCane .8vw, $candyCane 1.6vw),
         gold;
@@ -108,11 +108,16 @@ footer {
 
 .highlighted {
     box-shadow: inset 0px 0px 25px 0px yellow;
-}   
+}
+
+// DEV: visualizes the attractions gridWrap. Remove once fully functioning
+.area-grid-item {
+    border: 1px solid black;
+}
 
 .parkArea:hover{
     box-shadow: inset 0px 0px 40px 0px yellow;
-}   
+}
 
 .parkArea {
     animation-name: glow;
