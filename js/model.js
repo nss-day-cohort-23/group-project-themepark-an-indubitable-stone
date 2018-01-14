@@ -37,15 +37,6 @@ module.exports.includeAreas = (attractions, areas) => {
     return attractions;
 };
 
-module.exports.includeAttractionTypes = (attractions, types) => {
-    attractions = attractions.map( (attraction) => {
-      attraction.typeName = types.find(type => attraction.type_id === type.id);
-      attraction.typeName = attraction.typeName.name;
-      return attraction;
-    });
-    return attractions;
-};
-
 module.exports.getParkInfo = function() {
   return new Promise(function(resolve, reject) {
     $.ajax({
