@@ -28,7 +28,20 @@ module.exports.filterForHappeningNow = (data, hour) => {
   return happeningNow;
 };
 
+module.exports.includeDataOption = (attractions, arr) => {
+    // Checks whether the passed in array, by looking at the [0] element, has the
+    // "colorTheme" property. If it does then the arr is the "area" data, does not,
+    // then its the "type" data.
+    //
+    // This is not the preferable approach. It'd be preferable to get the key
+    // "area" or "type" from the passed in array, but I don't think that's
+    // preserved...
+    let optionName = arr[0].hasOwnProperty("colorTheme") ? "area" : "type";
+    let newAttractionProp = `${optionName}Name`;
     attractions = attractions.map(attraction => {
+        attraction[newAttractionProp] = arr.find(
+            opt => attraction[`${optionName}_id`] === opt.id);
+        attraction[newAttractionProp] = attraction[newAttractionProp].name;
         return attraction;
     });
     return attractions;
