@@ -98,7 +98,7 @@ module.exports.getAttraction = function(attraction) {
 
 module.exports.findAttractions = (attractions, search) => {
   let selectAtrractions = [];
-  if (search!=="") {
+  if (search !== "" && search !==" ") {
     let regexSearch = new RegExp(`${search}`, 'gi');
     attractions.forEach(att => {
       if (regexSearch.test(att.name)) {

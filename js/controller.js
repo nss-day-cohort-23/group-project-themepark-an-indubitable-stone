@@ -97,7 +97,7 @@ module.exports.loadPage = function()  {
     .then((data) => {
       let park = dataComp.groupAttractionsByArea(data);
       model.getAreas()
-      .then((areas) => view.colorGrid(areas, park));
+      .then((areas) => view.gridLayout(areas, park));
 
       let currentHour = getHours();
 
