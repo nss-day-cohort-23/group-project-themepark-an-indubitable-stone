@@ -34,6 +34,17 @@ const activateListeners = function() {
                 attractionsWithTypes = model.includeDataOption(attractions, types),
                 filteredAttractions, selectedAttractionIds;
 
+                if ($("#search-field").attr("placeholder") === "Search") {
+                    selectedAttractionIds = model.findAttractions(attractions, searchTerm);
+                    filteredAttractions = attractionsWithTypes.filter(attraction =>
+                        attraction.name.toLowerCase().indexOf(searchTerm) !== -1
+                    );
+                } else {
+                    selectedAttractionIds = model.findAttractionsByType(attractions, searchTerm);
+                    filteredAttractions = attractionsWithTypes.filter(attraction =>
+                        attraction.typeName.toLowerCase().indexOf(searchTerm) !== -1
+                    );
+                }
                 view.highlightArea(selectedAttractionIds);
                 view.printAttractions(filteredAttractions);
                 $(this).val('');
