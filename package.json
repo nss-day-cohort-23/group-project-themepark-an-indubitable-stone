@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/nss-day-cohort-23/group-project-themepark-an-indubitable-stone#readme",
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "grunt": "^0.4.5",
     "grunt-browserify": "^5.0.0",
     "grunt-contrib-handlebars": "^1.0.0",

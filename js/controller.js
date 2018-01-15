@@ -9,7 +9,7 @@ const setDefaultTime = () => {
     currentHours = currentTime.getHours(),
     currentMinutes = currentTime.getMinutes();
 
-    
+
     currentMinutes = currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes;
     currentHours = currentHours < 10 ? `0${currentHours}` : currentHours;
 
@@ -79,6 +79,8 @@ const activateListeners = function() {
         model.getAttraction({id: $(this).attr("attraction_id")})
         .then(data => {
             view.printAttractionDetails(data, $(this));
+            view.removePin();
+            view.markAttractionOnMap($(this).attr("attraction_id"));
         })
         .catch(error => console.log(error));
     });
