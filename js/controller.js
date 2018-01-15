@@ -95,6 +95,16 @@ const activateListeners = function() {
             .catch(error => console.log(error));
         });
     });
+
+    $("#attractionTypeSearch").click(function() {
+        let $target = $("#search-field");
+        if($target.attr("placeholder") === "Search") {
+            $target.attr("placeholder", "Search attraction type");
+        } else {
+            $target.attr("placeholder", "Search");
+        }
+        $target.val('');
+    });
 };
 
 
