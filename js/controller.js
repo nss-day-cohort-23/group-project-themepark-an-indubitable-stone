@@ -36,7 +36,7 @@ const activateListeners = function() {
                     filteredAttractions = attractionsWithTypes.filter(attraction => attraction.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
 
                     view.highlightArea(selectAttractionIds);
-                    view.printAttractions(filteredAttractions);
+                    view.printAttractions(filteredAttractions, true);
                 })
                 .catch(error => console.log(error));
             })
@@ -70,6 +70,7 @@ const activateListeners = function() {
         model.getAttraction({id: $(this).attr("attraction_id")})
         .then(data => {
             view.printAttractionDetails(data, $(this));
+            view.removePin();
             view.markAttractionOnMap($(this).attr("attraction_id"));
         })
         .catch(error => console.log(error));

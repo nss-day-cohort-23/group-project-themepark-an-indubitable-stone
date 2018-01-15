@@ -13,8 +13,13 @@ module.exports.removePin = () => {
     $(".fa-map-pin").removeClass("fa-map-pin");
 };
 
-module.exports.printAttractions = function(data) {
+module.exports.printAttractions = function(data, dropPin = false) {
     module.exports.removePin();
+    if(dropPin === true){
+        for(let i = 0;  i < data.length; i ++){
+            module.exports.markAttractionOnMap(data[i].id);   
+        }
+    }
     $("#sidebar").parent().scrollTop(0);
     $("#sidebar").empty();
     $("#sidebar").append(sidebar({object: data}));
