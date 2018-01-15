@@ -8,7 +8,10 @@ const setDefaultTime = () => {
     let currentTime = new Date(Date.now()),
     currentHours = currentTime.getHours(),
     currentMinutes = currentTime.getMinutes();
+
+    
     currentMinutes = currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes;
+    currentHours = currentHours < 10 ? `0${currentHours}` : currentHours;
 
     $("#time-selector").val(`${currentHours}:${currentMinutes}`);
 };
