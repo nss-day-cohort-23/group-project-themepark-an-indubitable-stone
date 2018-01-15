@@ -6,9 +6,7 @@ const attractionsGrid = require("../templates/attractionsGrid.hbs");
 
 module.exports.printAttractions = function(data) {
     $("#sidebar").empty();
-    let attr = {};
-    attr = {object: data};
-    $("#sidebar").append(sidebar(attr));
+    $("#sidebar").append(sidebar({object: data}));
 };
 
 module.exports.highlightArea = function(ids) {
@@ -28,13 +26,10 @@ const removeAttractionDetails = function() {
 };
 
 module.exports.printAttractionDetails = function(attraction, $object) {
-    if($object.has(".attractionData").length){
-        removeAttractionDetails();
-    } else {
-        removeAttractionDetails();
+    removeAttractionDetails();
+    if(!$object.has(".attractionData").length){
         $object.append(detail(attraction));
     }
-    
 };
 
 module.exports.printFooterDate = () => {
@@ -49,13 +44,16 @@ module.exports.printFooterDate = () => {
     $("#footer-date").text(`${monthNames[month+1]} ${day} ${year} `);
 };
 
+const stringifyPercent = (divisor) => {
+    return 100 / divisor + '%';
+};
 
 module.exports.colorGrid = function(areas, park) {
     areas.forEach( i => {
         let $areaElm = $(`div#park${i.id}`),
         attractions = park[`park${i.id}`],
         columns = Math.ceil(Math.sqrt(attractions.length)),
-        columnsPercent = 100 / columns + '%',
+        columnsPercent = stringifyPercent(columns),
         rows, rowsPercent;
 
         // DLK -
@@ -67,7 +65,7 @@ module.exports.colorGrid = function(areas, park) {
         //
         // tl;dr: make it look seeeeexy.
         rows = attractions.length / (columns - 1) === columns ? columns - 1 : columns;
-        rowsPercent = 100 / rows + '%';
+        rowsPercent = stringifyPercent(rows);
 
         $areaElm.css({
             "background-color": `#${i.colorTheme}`,
