@@ -32,7 +32,7 @@ const activateListeners = function() {
                 let selectAttractionIds = model.findAttractions(attractions, searchTerm);
                 model.getAttractionTypes()
                 .then(types => {
-                    let attractionsWithTypes = model.includeAttractionTypes(attractions, types),
+                    let attractionsWithTypes = model.includeDataOption(attractions, types),
                     filteredAttractions = attractionsWithTypes.filter(attraction => attraction.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
 
                     view.highlightArea(selectAttractionIds);
@@ -55,7 +55,7 @@ const activateListeners = function() {
                 model.getAreas()
                 .then(areas => {
 
-                    data = model.includeAreas(data, areas);
+                    data = model.includeDataOption(data, areas);
                     view.printAttractions(data);
                 })
                 .catch(err => console.log(err));
@@ -79,7 +79,7 @@ const activateListeners = function() {
         model.getAttractions().then(attractions => {
             model.getAttractionTypes()
             .then(types => {
-                let attractionsWithTypes = model.includeAttractionTypes(attractions, types),
+                let attractionsWithTypes = model.includeDataOption(attractions, types),
                 filteredAttractions = attractionsWithTypes.filter(attraction => attraction.area_id === areaId);
                 view.printAttractions(filteredAttractions);
             })
@@ -105,7 +105,7 @@ module.exports.loadPage = function()  {
           let attractions = model.filterForHappeningNow(data, currentHour);
           model.getAttractionTypes()
           .then(types => {
-              attractions = model.includeAttractionTypes(attractions, types);
+              attractions = model.includeDataOption(attractions, types);
               view.printAttractions(attractions);
           })
           .catch(err => console.log(err));
