@@ -25,20 +25,6 @@ const getHours = () => {
 
 const activateListeners = function() {
     $("#search-field").keypress(function (e) {
-        let searchTerm = $(this).val();
-        if (e.which == 13) {
-            model.getAttractions()
-            .then((attractions) => {
-                let selectAttractionIds = model.findAttractions(attractions, searchTerm);
-                model.getAttractionTypes()
-                .then(types => {
-                    let attractionsWithTypes = model.includeDataOption(attractions, types),
-                    filteredAttractions = attractionsWithTypes.filter(attraction => attraction.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
-
-                    view.highlightArea(selectAttractionIds);
-                    view.printAttractions(filteredAttractions);
-                })
-                .catch(error => console.log(error));
             })
             .catch(error => console.log(error));
         }
