@@ -9,19 +9,19 @@ const removeAttractionDetails = function() {
     $(".attractionData").remove();
 };
 
-const removePin = () => {
+module.exports.removePin = () => {
     $(".fa-map-pin").removeClass("fa-map-pin");
 };
 
 module.exports.printAttractions = function(data) {
-    removePin();
+    module.exports.removePin();
     $("#sidebar").parent().scrollTop(0);
     $("#sidebar").empty();
     $("#sidebar").append(sidebar({object: data}));
 };
 
 module.exports.highlightArea = function(ids) {
-    removePin();
+    module.exports.removePin();
     let $areas = $(".parkArea");
     
     $areas.removeClass("highlighted");
@@ -40,7 +40,7 @@ module.exports.markAttractionOnMap = (attractionId) => {
 
 module.exports.printAttractionDetails = function(attraction, $object) {
     removeAttractionDetails();
-    removePin();
+    module.exports.removePin();
     if(!$object.has(".attractionData").length){
         $object.append(detail(attraction));
     }
