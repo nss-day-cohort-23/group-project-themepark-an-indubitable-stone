@@ -36,7 +36,11 @@ const activateListeners = function() {
                     filteredAttractions = attractionsWithTypes.filter(attraction => attraction.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
 
                     view.highlightArea(selectAttractionIds);
-                    view.printAttractions(filteredAttractions, true);
+                    if(searchTerm.trim() !== ""){
+                        view.printAttractions(filteredAttractions, true);
+                    } else {
+                        view.printAttractions(filteredAttractions);
+                    }
                 })
                 .catch(error => console.log(error));
             })
