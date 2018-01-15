@@ -1,5 +1,6 @@
 'use strict';
 const $ = require('jquery');
+const Handlebars = require('hbsfy/runtime');
 const detail = require("../templates/detail.hbs");
 const sidebar = require("../templates/sidebar.hbs");
 const attractionsGrid = require("../templates/attractionsGrid.hbs");
@@ -68,6 +69,8 @@ const stringifyPercent = (divisor) => {
 };
 
 module.exports.gridLayout = function(areas, park) {
+    console.log(areas);
+    console.log(park);
     areas.forEach( i => {
         let $areaElm = $(`div#park${i.id}`),
         attractions = park[`park${i.id}`],
@@ -86,14 +89,14 @@ module.exports.gridLayout = function(areas, park) {
         rows = attractions.length / (columns - 1) === columns ? columns - 1 : columns;
         rowsPercent = stringifyPercent(rows);
 
-        $areaElm.append(areaTitle(i));
         $areaElm.css({
             "background-color": `#${i.colorTheme}`,
             "grid-template":
-                `repeat(${rows}, ${rowsPercent}) / repeat(${columns}, ${columnsPercent})`
+            `repeat(${rows}, ${rowsPercent}) / repeat(${columns}, ${columnsPercent})`
         });
         attractions.forEach(attraction => {
             $areaElm.append(attractionsGrid(attraction));
         });
+        $areaElm.append(areaTitle(i));
     });
 };
