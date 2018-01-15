@@ -15,9 +15,11 @@ module.exports.filterForHappeningNow = (data, hour) => {
         let amOrPm = time.match(/\w\w$/)[0];
         let timeToCheck = +time.match(/\d+(?=:)/);
 
-        timeToCheck = amOrPm === "PM" ?
-        (timeToCheck === 12 ? timeToCheck : timeToCheck + 12) :
-        (timeToCheck === 12 ? timeToCheck = 0 : timeToCheck);
+        if(amOrPm === "PM" && timeToCheck !== 12){
+          timeToCheck += 12;
+        } else if(timeToCheck === 12){
+          timeToCheck = 0;
+        }
 
         return regexHour.test(timeToCheck);
       });
