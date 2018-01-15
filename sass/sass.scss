@@ -1,30 +1,90 @@
-$candyCane: rgba(145, 22, 22, 0.801);
+//variables
+$highlight: inset 0 0 2vw 1vw gold,
+            inset 0 0 3vw 1vw slateblue;
+
+//extensions
+%posRel {
+    position: relative;
+}
+
+%bkgdLayer {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    background-size: cover;
+    border-radius: 1em;
+}
+
+
+//global styling
 
 body {
+    margin: 0;
+    padding: 0;
     font-family: 'Heebo', Helvetica, sans-serif;
+    background: linear-gradient(to right top, rgba(227, 227, 228, 0.63), rgba(245, 245, 245, 0.253)), url("../images/background.jpg");
+    background-size: cover;
 }
 
 nav {
     margin-bottom: 1vw;
+    border-bottom: .4vw slategray double;
+    background: linear-gradient(to right top, lavenderblush, lightgoldenrodyellow);
+    h2 {
+        display: inline;
+        margin: auto 3vw;
+        font-family: 'Shrikhand', Helvetica, sans-serif;
+        letter-spacing: .1em;
+        font-size: 2.4em;
+        text-shadow: .2vw 0 .02vw goldenrod;
+    }
 }
 
-h2 {
-    display: inline;
-    margin-right: 6vw;
-    font-family: 'Shrikhand', Helvetica, sans-serif;
+aside {
+    float: left;
+    width: 30%;
+    height: 80vh;
+    margin-left: 1vw;
+    border: 1px solid black;
+    background: whitesmoke;
+    overflow-y: scroll;
+    h3 {
+        text-align: center;
+        font-style: italic;
+        font-size: 1.3em;
+        letter-spacing: .2vw;
+        margin: .3vw auto;
+        border-bottom: .1vw solid rgb(147, 154, 163);
+    }
+    a {
+        text-decoration: none;
+        transition: all .2s;
+        outline: none;
+        color: rgb(1, 1, 95);
+        &:hover {
+            text-align: center;
+            color: rgb(255, 230, 0);
+            letter-spacing: .03vw;
+            text-shadow: 0 0 .1vw rgb(4, 8, 255), 0 0 .4vw rgb(65, 65, 65);
+        }
+    }
 }
 
-a {
-    text-decoration: none;
-    transition: all .2s;
+main {
+    width: 65%;
+    float: right;
+    margin-right: 1vw;
 }
 
-a:hover {
-    text-align: center;
-    color: rgb(0, 0, 214);
-    letter-spacing: .03vw;
-    text-shadow: 0 0 .04vw rgb(255, 255, 255), 0 0 .2vw black;;
+footer {
+    clear: both;
+    text-align: right;
 }
+
+
+////class styling
 
 .attraction-link {
     margin-bottom: 1vw;
@@ -36,19 +96,6 @@ a:hover {
     border-radius: 1vw;
     padding: 1.2vw;
     font-weight: 300;
-}
-
-
-#gridWrap {
-    display: grid;
-    grid-template-columns: repeat(3, 15vw);
-    grid-template-rows: repeat(3, 10vw);
-    grid-row-gap: 1.7vw;
-    grid-column-gap: 2.7vw;
-    justify-content: center;
-    margin: 1em auto;
-    padding: 1.3vw;
-    border: 2px solid black;
 }
 
 .parkArea {
@@ -64,76 +111,121 @@ a:hover {
     text-align: center;
     align-self: stretch;
     display: grid;
+    transition: all .5s;
+    h4 {
+        margin-left: .8vw;
+        letter-spacing: .1vw;
+        font-weight: 300;
+        z-index: 1;
+    }
 }
 
 .parkArea:hover {
-    box-shadow: 0 0 3vw rgb(95, 95, 95);
+    box-shadow: 0 0 4vw rgb(0, 0, 0);
+    transform: scale(1.01, 1.01);
     cursor: pointer;
 }
 
+// DEV: visualizes the attractions gridWrap. Remove once fully functioning
+.area-grid-item {
+    // border: 1px solid black;
+    z-index: 2;
+}
+
+.highlighted {
+    box-shadow: $highlight;
+    animation: glow 1s infinite;
+}
+
+
+////id styling
+
+#sub {
+    font-size: .6em;
+    letter-spacing: .2em;
+    margin-left: .5em;
+}
+
+#timeLabel {
+    font-size: 1.3vw;
+    color: whitesmoke;
+    text-shadow: 0 0 .1vw rgb(37, 37, 37);
+    letter-spacing: .1em;
+}
+
+#search-field {
+    width: 16vw;
+    height: 2vw;
+    font-size: 1.4vw;
+}
+
+#gridWrap {
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(3, 17vw);
+    grid-template-rows: repeat(3, 12vw);
+    grid-row-gap: .7vw;
+    grid-column-gap: 1vw;
+    justify-content: center;
+    margin: 1em auto;
+    padding: 1.3vw;
+    border: 2px solid black;
+    background: linear-gradient(to right top, rgb(227, 227, 228), rgba(245, 245, 245, 0.425)), url("../images/gridBack.jpg");
+    background-size: cover;
+}
+
+
+
+@for $id from 1 through 7 {
+    #park#{$id} {
+        @extend %posRel;
+        &:before {
+            @extend %bkgdLayer;
+            background-image: url('../images/park#{$id}.jpg');
+            transition: opacity .7s;
+        }
+        &:hover::before {
+            opacity: 1;
+        }
+    }
+}
+
+
 #parkEnter, #parkCenter {
     box-shadow: none;
+    transform: none;
+    border: .3vw double grey;
     cursor: initial;
 }
 
 #parkEnter {
     letter-spacing: .3vw;
-    background:
-        repeating-linear-gradient(45deg, transparent, transparent .8vw, $candyCane .8vw, $candyCane 1.6vw),
-        repeating-linear-gradient(-45deg, transparent, transparent .8vw,$candyCane .8vw, $candyCane 1.6vw),
-        gold;
+    background: url('../images/entrance.jpg');
+    background-size: cover;
+    border-radius: 2em;
 }
 
 #parkCenter {
-    background: repeating-radial-gradient(ellipse at center, darkcyan, rgb(87, 87, 87) 1vw, rgb(222, 255, 38) 2vw);
+    background: url('../images/stone.jpg');
+    background-size: cover;
+    background-position: -1vw -1vw;
+    border-radius: 50%;
 }
 
-aside {
-    float: left;
-    width: 30%;
-    border: 1px solid black;
-    height: 500px;
-    overflow-y: scroll;
-}
 
-main {
-    width: 65%;
-    float: right;
-}
 
-footer {
-    clear: both;
-    text-align: right;
-}
-
-.highlighted {
-    box-shadow: inset 0px 0px 25px 0px yellow;
-}
-
-// DEV: visualizes the attractions gridWrap. Remove once fully functioning
-.area-grid-item {
-    border: 1px solid black;
-}
-
-.parkArea:hover{
-    box-shadow: inset 0px 0px 40px 0px yellow;
-}
-
-.parkArea {
-    animation-name: glow;
-    transition: all 1s;
-}
+////// animations
 
 * {
-    animation: fadeIn 0.5s;
+    animation: fadeIn 0.9s;
 }
 
 @keyframes glow {
-    0% {
-        box-shadow: inset 0px 0px 0px 0px yellow;
+    0%, 100% {
+        box-shadow: inset 0 0 3vw .6vw gold;
     }
-    100% {
-        box-shadow: inset 0px 0px 75px 0px yellow;
+    50% {
+        box-shadow: $highlight;
     }
 }
 

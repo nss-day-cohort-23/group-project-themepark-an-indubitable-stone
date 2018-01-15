@@ -3,6 +3,7 @@ const $ = require('jquery');
 const detail = require("../templates/detail.hbs");
 const sidebar = require("../templates/sidebar.hbs");
 const attractionsGrid = require("../templates/attractionsGrid.hbs");
+const areaTitle = require("../templates/areaTitle.hbs");
 
 module.exports.printAttractions = function(data) {
     $("#sidebar").empty();
@@ -50,7 +51,7 @@ module.exports.printFooterDate = () => {
 };
 
 
-module.exports.colorGrid = function(areas, park) {
+module.exports.gridLayout = function(areas, park) {
     areas.forEach( i => {
         let $areaElm = $(`div#park${i.id}`),
         attractions = park[`park${i.id}`],
@@ -69,12 +70,12 @@ module.exports.colorGrid = function(areas, park) {
         rows = attractions.length / (columns - 1) === columns ? columns - 1 : columns;
         rowsPercent = 100 / rows + '%';
 
+        $areaElm.append(areaTitle(i));
         $areaElm.css({
             "background-color": `#${i.colorTheme}`,
             "grid-template":
                 `repeat(${rows}, ${rowsPercent}) / repeat(${columns}, ${columnsPercent})`
         });
-
         attractions.forEach(attraction => {
             $areaElm.append(attractionsGrid(attraction));
         });

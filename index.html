@@ -10,8 +10,8 @@
 </head>
 <body>
     <nav>
-        <h2>An Indubitable Stone - Theme Park</h2>
-        <input type="text" id="search-field"></input>
+        <h2>An Indubitable Stone, <span id="sub">the Theme Park</span></h2>
+        <input type="text" id="search-field" placeholder="Search"></input>
     </nav>
     <aside>
         <h3>Attractions</h3>
@@ -19,12 +19,11 @@
         </div>
     </aside>
     <main>
+        <label for="time-selector" id="timeLabel">Select Time:</label>
         <input id="time-selector" type="time">
-
-        </input>
         <div id="gridWrap">
             <div class="parkArea" id="park1" area_id="1"></div>
-            <div class="parkArea" id="parkEnter" area_id="entrance">ENTRANCE</div>
+            <div class="parkArea" id="parkEnter" area_id="entrance"></div>
             <div class="parkArea" id="park2" area_id="2"></div>
             <div class="parkArea" id="park3" area_id="3"></div>
             <div class="parkArea" id="parkCenter" area_id="center"></div>
