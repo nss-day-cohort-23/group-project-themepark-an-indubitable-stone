@@ -45,11 +45,17 @@ module.exports.markAttractionOnMap = (attractionId) => {
 };
 
 module.exports.printAttractionDetails = function(attraction, $object) {
-    removeAttractionDetails();
+  
+    let attractionData = $object.has(".attractionData").length;
+
     module.exports.removePin();
-    if(!$object.has(".attractionData").length){
+
+    removeAttractionDetails();
+    if(!attractionData){
         $object.append(detail(attraction));
     }
+
+    
 };
 
 module.exports.printFooterDate = () => {
