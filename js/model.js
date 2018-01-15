@@ -31,13 +31,6 @@ module.exports.filterForHappeningNow = (data, hour) => {
 };
 
 module.exports.includeDataOption = (attractions, arr) => {
-    // Checks whether the passed in array, by looking at the [0] element, has the
-    // "colorTheme" property. If it does then the arr is the "area" data, does not,
-    // then its the "type" data.
-    //
-    // This is not the preferable approach. It'd be preferable to get the key
-    // "area" or "type" from the passed in array, but I don't think that's
-    // preserved...
     let optionName = arr[0].hasOwnProperty("colorTheme") ? "area" : "type";
     let newAttractionProp = `${optionName}Name`;
     attractions = attractions.map(attraction => {
@@ -100,14 +93,23 @@ module.exports.getAttraction = function(attraction) {
 };
 
 module.exports.findAttractions = (attractions, search) => {
-  let selectAtrractions = [];
-  if (search !== "" && search !==" ") {
+    let selectedAtrractions = [];
     let regexSearch = new RegExp(`${search}`, 'gi');
     attractions.forEach(att => {
-      if (regexSearch.test(att.name)) {
-        selectAtrractions.push(att.area_id);
-      }
-  });
-  }
-  return selectAtrractions;
+        if (regexSearch.test(att.name)) {
+        selectedAtrractions.push(att.area_id);
+        }
+    });
+  return selectedAtrractions;
+};
+
+module.exports.findAttractionsByType = (attractions, search) => {
+    let selectedAtrractions = [];
+    let regexSearch = new RegExp(`${search}`, 'gi');
+    attractions.forEach(att => {
+        if (regexSearch.test(att.typeName)) {
+            selectedAtrractions.push(att.area_id);
+        }
+    });
+    return selectedAtrractions;
 };

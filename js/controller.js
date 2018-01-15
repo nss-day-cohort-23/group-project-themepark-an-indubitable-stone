@@ -9,7 +9,7 @@ const setDefaultTime = () => {
     currentHours = currentTime.getHours(),
     currentMinutes = currentTime.getMinutes();
 
-    
+
     currentMinutes = currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes;
     currentHours = currentHours < 10 ? `0${currentHours}` : currentHours;
 
@@ -25,26 +25,31 @@ const getHours = () => {
 
 const activateListeners = function() {
     $("#search-field").keypress(function (e) {
-        let searchTerm = $(this).val();
-        if (e.which == 13) {
-            model.getAttractions()
-            .then((attractions) => {
-                let selectAttractionIds = model.findAttractions(attractions, searchTerm);
-                model.getAttractionTypes()
-                .then(types => {
-                    let attractionsWithTypes = model.includeDataOption(attractions, types),
-                    filteredAttractions = attractionsWithTypes.filter(attraction => attraction.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
+        let searchTerm = $(this).val().toLowerCase();
+        if (e.which == 13 && searchTerm.trim() !== "") {
+            Promise.all([model.getAttractions(), model.getAttractionTypes()])
+            .then(values => {
+                let attractions = values[0],
+                types = values[1],
+                attractionsWithTypes = model.includeDataOption(attractions, types),
+                filteredAttractions, selectedAttractionIds;
 
-                    view.highlightArea(selectAttractionIds);
-                    if(searchTerm.trim() !== ""){
-                        view.printAttractions(filteredAttractions, true);
-                    } else {
-                        view.printAttractions(filteredAttractions);
-                    }
-                })
-                .catch(error => console.log(error));
+                if ($("#search-field").attr("placeholder") === "Search") {
+                    selectedAttractionIds = model.findAttractions(attractions, searchTerm);
+                    filteredAttractions = attractionsWithTypes.filter(attraction =>
+                        attraction.name.toLowerCase().indexOf(searchTerm) !== -1
+                    );
+                } else {
+                    selectedAttractionIds = model.findAttractionsByType(attractions, searchTerm);
+                    filteredAttractions = attractionsWithTypes.filter(attraction =>
+                        attraction.typeName.toLowerCase().indexOf(searchTerm) !== -1
+                    );
+                }
+                view.highlightArea(selectedAttractionIds);
+                view.printAttractions(filteredAttractions);
+                $(this).val('');
             })
-            .catch(error => console.log(error));
+            .catch(err => console.log(err));
         }
     });
 
@@ -91,6 +96,16 @@ const activateListeners = function() {
             })
             .catch(error => console.log(error));
         });
+    });
+
+    $("#attractionTypeSearch").click(function() {
+        let $target = $("#search-field");
+        if($target.attr("placeholder") === "Search") {
+            $target.attr("placeholder", "Search attraction type");
+        } else {
+            $target.attr("placeholder", "Search");
+        }
+        $target.val('');
     });
 };
 
