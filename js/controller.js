@@ -70,6 +70,7 @@ const activateListeners = function() {
         model.getAttraction({id: $(this).attr("attraction_id")})
         .then(data => {
             view.printAttractionDetails(data, $(this));
+            view.markAttractionOnMap($(this).attr("attraction_id"));
         })
         .catch(error => console.log(error));
     });
