@@ -39,14 +39,14 @@ module.exports.printAttractionDetails = function(attraction, $object) {
 
 module.exports.printFooterDate = () => {
     let todaysDate = new Date(Date.now()),
-    day = todaysDate.getDay(),
+    day = todaysDate.getDate(),
     month = todaysDate.getMonth(),
     year = todaysDate.getFullYear();
 
     let monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
 
-    $("#footer-date").text(`${monthNames[month+1]} ${day} ${year} `);
+    $("#footer-date").text(`${monthNames[month]} ${day} ${year} `);
 };
 
 
