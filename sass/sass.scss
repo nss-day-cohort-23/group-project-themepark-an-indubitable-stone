@@ -62,7 +62,7 @@ aside {
         text-decoration: none;
         transition: all .2s;
         outline: none;
-        color: rgb(1, 1, 95);
+        color: rgb(68, 68, 71);
         &:hover {
             text-align: center;
             color: rgb(255, 230, 0);
@@ -89,6 +89,9 @@ footer {
 .attraction-link {
     margin-bottom: 1vw;
     margin-left: .3vw;
+    &:hover {
+        background: rgb(147, 156, 165);
+    }
 }
 
 .attractionData {
