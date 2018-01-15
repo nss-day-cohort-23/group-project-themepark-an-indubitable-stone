@@ -13,9 +13,9 @@ const removePin = () => {
     $(".fa-map-pin").removeClass("fa-map-pin");
 };
 
-
 module.exports.printAttractions = function(data) {
     removePin();
+    $("#sidebar").parent().scrollTop(0);
     $("#sidebar").empty();
     $("#sidebar").append(sidebar({object: data}));
 };
