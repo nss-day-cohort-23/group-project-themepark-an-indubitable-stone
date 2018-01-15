@@ -32,9 +32,11 @@ nav {
     margin-bottom: 1vw;
     border-bottom: .4vw slategray double;
     background: linear-gradient(to right top, lavenderblush, lightgoldenrodyellow);
+    h2, div {
+        margin: auto 3vw;
+    }
     h2 {
         display: inline;
-        margin: auto 3vw;
         font-family: 'Shrikhand', Helvetica, sans-serif;
         letter-spacing: .1em;
         font-size: 2.4em;

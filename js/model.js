@@ -42,6 +42,20 @@ module.exports.includeDataOption = (attractions, arr) => {
     return attractions;
 };
 
+module.exports.findAttractions = (attractions, search, bool) => {
+    let property = bool ? "name" : "typeName",
+    selectedAttractions = [],
+    regex = new RegExp(`${search}`, 'gi');
+
+    attractions.forEach(att => {
+        if (regex.test(att[property])) {
+            selectedAttractions.push(att.area_id);
+        }
+    });
+
+  return selectedAttractions;
+};
+
 module.exports.getParkInfo = function() {
   return new Promise(function(resolve, reject) {
     $.ajax({
@@ -90,26 +104,4 @@ module.exports.getAttraction = function(attraction) {
     .done(data => resolve(data))
     .fail(err => reject(err));
   });
-};
-
-module.exports.findAttractions = (attractions, search) => {
-    let selectedAtrractions = [];
-    let regexSearch = new RegExp(`${search}`, 'gi');
-    attractions.forEach(att => {
-        if (regexSearch.test(att.name)) {
-        selectedAtrractions.push(att.area_id);
-        }
-    });
-  return selectedAtrractions;
-};
-
-module.exports.findAttractionsByType = (attractions, search) => {
-    let selectedAtrractions = [];
-    let regexSearch = new RegExp(`${search}`, 'gi');
-    attractions.forEach(att => {
-        if (regexSearch.test(att.typeName)) {
-            selectedAtrractions.push(att.area_id);
-        }
-    });
-    return selectedAtrractions;
 };
