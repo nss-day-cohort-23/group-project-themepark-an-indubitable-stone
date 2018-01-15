@@ -5,14 +5,30 @@ const sidebar = require("../templates/sidebar.hbs");
 const attractionsGrid = require("../templates/attractionsGrid.hbs");
 const areaTitle = require("../templates/areaTitle.hbs");
 
-module.exports.printAttractions = function(data) {
+const removeAttractionDetails = function() {
+    $(".attractionData").remove();
+};
+
+module.exports.removePin = () => {
+    $(".fa-map-pin").removeClass("fa-map-pin");
+};
+
+module.exports.printAttractions = function(data, dropPin = false) {
+    module.exports.removePin();
+    if(dropPin === true){
+        for(let i = 0;  i < data.length; i ++){
+            module.exports.markAttractionOnMap(data[i].id);   
+        }
+    }
+    $("#sidebar").parent().scrollTop(0);
     $("#sidebar").empty();
     $("#sidebar").append(sidebar({object: data}));
 };
 
 module.exports.highlightArea = function(ids) {
+    module.exports.removePin();
     let $areas = $(".parkArea");
-
+    
     $areas.removeClass("highlighted");
 
     $areas.each(function() {
@@ -22,18 +38,14 @@ module.exports.highlightArea = function(ids) {
     });
 };
 
-const removeAttractionDetails = function() {
-    $(".attractionData").remove();
-};
-
 module.exports.markAttractionOnMap = (attractionId) => {
     let pin = "fa fa-map-pin";
-    $(".fa-map-pin").removeClass("fa-map-pin");
     $(`#gridWrap #${attractionId}`).addClass(pin); 
 };
 
 module.exports.printAttractionDetails = function(attraction, $object) {
     removeAttractionDetails();
+    module.exports.removePin();
     if(!$object.has(".attractionData").length){
         $object.append(detail(attraction));
     }
