@@ -28,6 +28,14 @@ const removeAttractionDetails = function() {
     $(".attractionData").remove();
 };
 
+module.exports.markAttractionOnMap = (attractionId) => {
+    let pin = "fa fa-map-pin";
+    $(".fa-map-pin").removeClass("fa-map-pin");
+    $(`#gridWrap #${attractionId}`).addClass(pin); 
+//    $(`#gridWrap #${attractionId}`).append(`<i class="fa fa-map-pin" aria-hidden="true"></i>`);
+//    console.log('$(`#gridWrap #${attractionId}`)', $(`#gridWrap #${attractionId}`));
+};
+
 module.exports.printAttractionDetails = function(attraction, $object) {
     if($object.has(".attractionData").length){
         removeAttractionDetails();
