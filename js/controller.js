@@ -46,7 +46,7 @@ const activateListeners = function() {
                     );
                 }
                 view.highlightArea(selectedAttractionIds);
-                view.printAttractions(filteredAttractions);
+                view.printAttractions(filteredAttractions, true);
                 $(this).val('');
             })
             .catch(err => console.log(err));
