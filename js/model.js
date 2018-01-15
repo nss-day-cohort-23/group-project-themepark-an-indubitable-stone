@@ -91,16 +91,16 @@ module.exports.getAttraction = function(attraction) {
 };
 
 module.exports.findAttractions = (attractions, search) => {
-  let selectAtrractions = [];
-  if (search !== "" && search !==" ") {
+    let selectedAtrractions = [];
     let regexSearch = new RegExp(`${search}`, 'gi');
     attractions.forEach(att => {
-      if (regexSearch.test(att.name)) {
-        selectAtrractions.push(att.area_id);
-      }
-  });
-  }
-  return selectAtrractions;
+        if (regexSearch.test(att.name)) {
+        selectedAtrractions.push(att.area_id);
+        }
+    });
+  return selectedAtrractions;
+};
+
 module.exports.findAttractionsByType = (attractions, search) => {
     let selectedAtrractions = [];
     let regexSearch = new RegExp(`${search}`, 'gi');
